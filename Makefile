@@ -20,6 +20,8 @@ STAT_SRC := $(shell find static -type f)
 STAT_SRC += $(shell find pages -name '*.jpg' -o -name '*.png')
 STAT_DST := $(STAT_SRC:static/%=public/%)
 STAT_DST := $(STAT_DST:pages/%=public/%)
+FAVICONS := $(shell find static/assets/img -name 'favicon-*.png')
+FAVICONS := $(sort $(FAVICONS))
 
 define postcss =
 	@mkdir -p $(@D)
@@ -50,7 +52,7 @@ js-libs: $(JS_LIB)
 	@mkdir -p $(ASSETS)/js
 	@cp -vu $^ $(ASSETS)/js
 
-static: $(STAT_DST)
+static: $(STAT_DST) public/favicon.ico
 
 public/%.html: pages/%.json pages/%.njs html-minifier.json $(TPLS)
 	@mkdir -p $(@D)
@@ -60,6 +62,9 @@ public/%.html: pages/%.json pages/%.njs html-minifier.json $(TPLS)
 
 pages/%.json::
 	@touch $@
+
+public/favicon.ico: $(FAVICONS)
+	png2ico $@ $^
 
 public/%.css: pages/%.scss $(CSS_DEP)
 	@mkdir -p $(@D)
