@@ -1,13 +1,17 @@
 PATH   := ./node_modules/.bin:./bin:$(PATH)
 ASSETS := public/assets
 
+include config.mk
+
 TPLS  := $(shell find templates -name '*.njs')
 TPLS  += $(shell find pages -name '*.njs' -path '*/templates/*')
 PAGES := $(shell find pages -name '*.njs' -not -path '*/templates/*')
 PAGES := $(PAGES:pages/%.njs=public/%.html)
+PAGES := $(filter-out $(IGNORE_PAGES),$(PAGES))
 
 CSS_SRC := $(shell find pages -name 'index.scss')
 CSS_DST := $(CSS_SRC:pages/%.scss=public/%.css)
+CSS_DST := $(filter-out $(IGNORE_PAGES),$(CSS_DST))
 CSS_DEP := $(shell find pages -name '*.scss' ! -name 'index.scss')
 CSS_DEP += $(shell find node_modules/bulma -name '*.scss' -o -name '*.sass')
 
@@ -20,6 +24,7 @@ STAT_SRC := $(shell find static -type f)
 STAT_SRC += $(shell find pages -name '*.jpg' -o -name '*.png')
 STAT_DST := $(STAT_SRC:static/%=public/%)
 STAT_DST := $(STAT_DST:pages/%=public/%)
+STAT_DST := $(filter-out $(IGNORE_PAGES),$(STAT_DST))
 FAVICONS := $(shell find static/assets/img -name 'favicon-*.png')
 FAVICONS := $(sort $(FAVICONS))
 
