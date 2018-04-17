@@ -582,15 +582,6 @@
     <h3 class="is-size-4 has-text-info has-text-centered">($49 Risk Free)</h3>
   {% endcall %}
 
-  <footer class="footer">
-    <div class="container has-text-centered">
-      <a href="#">Terms &amp; Condition</a> &bull;
-      <a href="#">Income Disclosure</a> &bull;
-      <a href="#">Privacy Policy</a>
-      <p class="has-space-top">
-        Copyright 2018 &bull; Online Commissioner &bull; All Rights Reserved
-      </p>
-    </div>
-  </footer>
+  {% include "../../templates/footer.njs" %}
 
 {% endblock %}

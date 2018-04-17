@@ -91,16 +91,7 @@
     </div>
   </div>
 
-  <footer class="footer">
-    <div class="container has-text-centered">
-      <a href="#">Terms &amp; Condition</a> &bull;
-      <a href="#">Income Disclosure</a> &bull;
-      <a href="#">Privacy Policy</a>
-      <p class="has-space-top">
-        Copyright 2018 &bull; Online Commissioner &bull; All Rights Reserved
-      </p>
-    </div>
-  </footer>
+  {% include "../../templates/footer.njs" %}
 
   <div class="modal" id="enrichment-form">
     <div class="modal-background"></div>

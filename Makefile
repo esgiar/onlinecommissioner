@@ -12,6 +12,7 @@ PAGES := $(filter-out $(IGNORE_PAGES),$(PAGES))
 CSS_SRC := $(shell find pages -name 'index.scss')
 CSS_DST := $(CSS_SRC:pages/%.scss=public/%.css)
 CSS_DST := $(filter-out $(IGNORE_PAGES),$(CSS_DST))
+CSS_DST += public/assets/css/bulma.min.css
 CSS_DEP := $(shell find pages -name '*.scss' ! -name 'index.scss')
 CSS_DEP += $(shell find node_modules/bulma -name '*.scss' -o -name '*.sass')
 
@@ -70,6 +71,10 @@ pages/%.json::
 
 public/favicon.ico: $(FAVICONS)
 	png2ico $@ $^
+
+public/assets/css/bulma.min.css: node_modules/bulma/css/bulma.min.css
+	@mkdir -p $(@D)
+	cp $< $@
 
 public/%.css: pages/%.scss $(CSS_DEP)
 	@mkdir -p $(@D)
