@@ -16,6 +16,9 @@
     "url": "https://github.com/esgiar/imf-2018/issues"
   },
   "homepage": "https://github.com/esgiar/imf-2018#readme",
+  "scripts": {
+    "start": "http-server"
+  },
   "devDependencies": {
     "autoprefixer": "^8.3.0",
     "babel-core": "^6.26.0",
@@ -23,6 +26,7 @@
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-preset-latest": "^6.24.1",
     "html-minifier": "^3.5.14",
+    "http-server": "^0.11.1",
     "imagemin-cli": "^3.0.0",
     "nunjucks": "^3.1.2",
     "postcss-cli": "^5.0.0",
