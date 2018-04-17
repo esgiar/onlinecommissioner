@@ -1,0 +1,26 @@
+#!/usr/bin/env node
+
+const _ = require('lodash')
+const Path = require('path')
+const nunjucks = require('nunjucks')
+
+const cwd = process.cwd()
+const tplFile = process.argv[2]
+const dataFiles = process.argv.slice(3).map((file) => Path.resolve(cwd, file))
+const context = _.uniq(dataFiles).reduce((ctx, file) => {
+  let data = {}
+  try {
+    data = require(file)
+  } catch (e) {}
+  return Object.assign({}, ctx, data)
+}, {})
+
+context.node_env = process.env.NODE_ENV || 'development'
+
+nunjucks.render(tplFile, context, function (err, res) {
+  if (err) {
+    console.error(err)
+  } else {
+    console.log(res)
+  }
+})

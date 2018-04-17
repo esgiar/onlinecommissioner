@@ -1,0 +1,21 @@
+{
+  "date": "14 - 16 May 2018",
+  "location": {
+    "headline": "BRISBANE & GOLD COAST",
+    "full": "Brisbane & Cold Coast, QLD",
+    "places": [
+      { "name": "Royal on the Park",
+        "date": "Monday, May 14, 2018",
+        "address": "Royal on the park<br>152 Alice Street<br>Brisbane QLD 4000"
+      },
+      { "name": "Royal on the Park",
+        "date": "Tuesday, May 15, 2018",
+        "address": "Royal on the park<br>152 Alice Street<br>Brisbane QLD 4000"
+      },
+      { "name": "Novotel Surfers Paradise",
+        "date": "Wednesday, May 16, 2018",
+        "address": "Novotel Surfers Paradise<br>3105 SurfersParadise QLD 4217"
+      }
+    ]
+  }
+}
