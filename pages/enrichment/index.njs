@@ -1,4 +1,7 @@
 {% set title = "enRICHment E-book Special Access" %}
+{% set formURL = "https://app.getresponse.com/add_subscriber.html" %}
+{% set confirmURL = "http://dev.onlinecommissioner.com/enrichment/thankyou.html" %}
+{% set listToken = "6LJ2R" %}
 
 {% extends "./templates/base.njs" %}
 {% from "../../templates/macros/countdown.njs" import countdown %}
@@ -107,13 +110,13 @@
         <h2 class="subtitle">
           Please enter your details correctly to claim your special access.
         </h2>
-        <form>
+        <form action="{{ formURL }}" accept-charset="utf-8" method="post">
           <div class="field">
             <label class="label">
               Name <span class="has-text-danger">*</span>
             </label>
             <p class="control has-icons-left">
-              <input class="input is-medium" type="text" autofocus="autofocus">
+              <input class="input is-medium" type="text" name="name" autofocus required>
               <span class="icon is-small is-left">
                 <i class="fas fa-user"></i>
               </span>
@@ -124,7 +127,7 @@
               Email Address <span class="has-text-danger">*</span>
             </label>
             <p class="control has-icons-left">
-              <input class="input is-medium" type="email">
+              <input class="input is-medium" type="email" name="email" required>
               <span class="icon is-small is-left">
                 <i class="fas fa-at"></i>
               </span>
@@ -133,10 +136,9 @@
           <div class="field">
             <label class="label">
               Phone Number (with Country Code)
-              <span class="has-text-danger">*</span>
             </label>
             <p class="control has-icons-left">
-              <input class="input is-medium" type="text">
+              <input class="input is-medium" type="tel" name="custom_phone" title="Example: +6012345678">
               <span class="icon is-small is-left">
                 <i class="fas fa-phone"></i>
               </span>
@@ -146,10 +148,12 @@
             </p>
           </div>
           <div class="field has-text-centered">
-            <button class="button is-primary is-medium is-rounded">
+            <button class="button is-primary is-medium is-rounded" type="submit">
               Send me the E-Book!
             </button>
           </div>
+          <input type="hidden" name="campaign_token" value="{{ listToken }}" />
+          <input type="hidden" name="thankyou_url" value="{{ confirmURL }}"/>
         </form>
       </div>
     </div>
