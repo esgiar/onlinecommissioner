@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+progDir=$(dirname $0)
+rootDir=$(realpath ${progDir}/..)
+publicDir=${rootDir}/public
+deployDir=${rootDir}/deploy
+filename=${deployDir}/$(date '+%Y-%m-%d.%H%M%S').tar.gz
+
+cd $publicDir
+tar vczf $filename *
