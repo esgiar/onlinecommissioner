@@ -1,14 +1,23 @@
+# Customizable variables (set in `config.mk` file)
 PATH   := ./node_modules/.bin:./bin:$(PATH)
-ASSETS := public/assets
+PUBLIC := public
+ASSETS := $(PUBLIC)/assets
+SITE   := site.json
 
 include config.mk
 
+# HTML Pages
 TPLS  := $(shell find templates -name '*.njs')
 TPLS  += $(shell find pages -name '*.njs' -path '*/templates/*')
 PAGES := $(shell find pages -name '*.njs' -not -path '*/templates/*')
 PAGES := $(PAGES:pages/%.njs=public/%.html)
 PAGES := $(filter-out $(IGNORE_PAGES),$(PAGES))
 
+# HTML Emails
+MJMLS  := $(shell find emails -name '*.njs')
+EMAILS := $(MJMLS:emails/%.njs=public/emails/%.html)
+
+# CSS
 CSS_SRC := $(shell find pages -name 'index.scss')
 CSS_DST := $(CSS_SRC:pages/%.scss=public/%.css)
 CSS_DST := $(filter-out $(IGNORE_PAGES),$(CSS_DST))
@@ -16,11 +25,13 @@ CSS_DST += public/assets/css/bulma.min.css
 CSS_DEP := $(shell find pages -name '*.scss' ! -name 'index.scss')
 CSS_DEP += $(shell find node_modules/bulma -name '*.scss' -o -name '*.sass')
 
+# Javascript
 JS_SRC := $(shell find scripts -name '*.js')
 JS_DST := $(JS_SRC:scripts/%.js=public/assets/js/%.js)
 JS_LIB := node_modules/zepto/dist/zepto.js \
           node_modules/moment/min/moment.min.js
 
+# Other static files
 STAT_SRC := $(shell find static -type f)
 STAT_SRC += $(shell find pages -name '*.jpg' -o -name '*.png')
 STAT_DST := $(STAT_SRC:static/%=public/%)
@@ -44,9 +55,11 @@ define rollup =
 	rollup -c -i $< -o $@
 endef
 
-all: html css js static
+all: html emails css js static
 
 html: $(PAGES)
+
+emails: $(EMAILS)
 
 css: $(CSS_DST)
 
@@ -60,9 +73,19 @@ js-libs: $(JS_LIB)
 
 static: $(STAT_DST) public/favicon.ico
 
-public/%.html: pages/%.json pages/%.njs html-minifier.json $(TPLS)
+public/emails/%.html: emails/%.mjml
 	@mkdir -p $(@D)
-	njs pages/$*.njs pages/$(*D)/index.json pages/$*.json \
+	mjml $< -o $@
+
+emails/%.mjml: emails/%.njs $(SITE) emails/%.json
+	njs $< $(SITE) emails/$(*D)/index.json emails/$*.json > $@
+
+emails/%.json::
+	@touch $@
+
+public/%.html: $(SITE) pages/%.json pages/%.njs html-minifier.json $(TPLS)
+	@mkdir -p $(@D)
+	njs pages/$*.njs $(SITE) pages/$(*D)/index.json pages/$*.json \
 	  | html-minifier --config-file html-minifier.json \
 	  > $@
 

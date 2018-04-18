@@ -1,0 +1,14 @@
+{
+  "_base": {
+    "title": "Online Commissioner",
+    "email": "contact@onlinecommissioner.com"
+  },
+  "_development": {
+    "base": "http://dev.onlinecommissioner.com",
+    "static": "http://dev.onlinecommissioner.com/assets"
+  },
+  "_production": {
+    "base": "http://onlinecommissioner.com",
+    "static": "http://onlinecommissioner.com/assets"
+  }
+}

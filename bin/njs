@@ -4,6 +4,8 @@ const _ = require('lodash')
 const Path = require('path')
 const nunjucks = require('nunjucks')
 
+const nodeEnv = process.env.NODE_ENV || 'development'
+const configKey = '_' + nodeEnv
 const cwd = process.cwd()
 const tplFile = process.argv[2]
 const dataFiles = process.argv.slice(3).map((file) => Path.resolve(cwd, file))
@@ -12,10 +14,10 @@ const context = _.uniq(dataFiles).reduce((ctx, file) => {
   try {
     data = require(file)
   } catch (e) {}
-  return Object.assign({}, ctx, data)
+  return Object.assign({}, ctx, data._base, data[configKey] || data)
 }, {})
 
-context.node_env = process.env.NODE_ENV || 'development'
+context.node_env = nodeEnv
 
 nunjucks.render(tplFile, context, function (err, res) {
   if (err) {
