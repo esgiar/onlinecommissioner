@@ -9,9 +9,13 @@
 {% block body %}
   <header class="section is-paddingless has-background-dark">
     <div class="container is-clearfix">
-      <figure class="image is-128x128 is-pulled-right" id="oc-logo">
-        <img src="../assets/img/profile-pic-3.png">
-      </figure>
+      <div class="columns">
+        <div class="column is-2 is-offset-8">
+          <figure class="image is-2by1 has-space-top">
+            <img src="../assets/img/logo-online_commissioner-2x1.png">
+          </figure>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -21,7 +25,7 @@
         <div class="columns is-centered">
           <div class="column is-3">
             <figure class="image is-3by4">
-              <img src="../assets/img/enrichment-cover.jpg">
+              <img src="../assets/img/product-enrichment_ebook-3x4.jpg">
             </figure>
           </div>
           <div class="column is-4 has-text-centered">
@@ -80,7 +84,7 @@
         </div>
         <div class="column is-3 has-text-centered">
           <figure class="image is-4by3 has-space has-space-top is-medium">
-            <img src="../assets/img/bakar-rahman-2.jpg">
+            <img src="../assets/img/person-bakar_rahman_01-4x3.jpg">
           </figure>
 
           <button class="button is-primary is-size-4 has-text-weight-bold open-modal" data-modal="enrichment-form">
@@ -107,7 +111,7 @@
               Name <span class="has-text-danger">*</span>
             </label>
             <p class="control has-icons-left">
-              <input class="input is-medium" type="text" name="name" autofocus required>
+              <input class="input is-medium" type="text" name="name" required>
               <span class="icon is-small is-left">
                 <i class="fas fa-user"></i>
               </span>

@@ -55,10 +55,14 @@
 
 {% block body %}
   <header class="section is-paddingless has-background-info">
-    <div class="container is-clearfix">
-      <figure class="image is-128x128 is-pulled-right" id="oc-logo">
-        <img src="../assets/img/profile-pic-3.png">
-      </figure>
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-2">
+          <figure class="image is-2by1 has-space-top">
+            <img src="../assets/img/logo-online_commissioner-2x1.png">
+          </figure>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -107,7 +111,7 @@
     <div class="columns is-multiline">
       <div class="column is-half">
         <figure class="image is-4by3">
-          <img src="../assets/img/bakar-rahman-2.jpg">
+          <img src="../assets/img/person-bakar_rahman_01-4x3.jpg">
         </figure>
       </div>
       <div class="column is-half content is-medium">
@@ -122,12 +126,12 @@
       </div>
       <div class="column is-half">
         <figure class="image is-4by3">
-          <img src="../assets/img/bakar-rahman-3.jpg">
+          <img src="../assets/img/person-bakar_rahman_02-4x3.jpg">
         </figure>
       </div>
       <div class="column is-half">
         <figure class="image is-4by3">
-          <img src="../assets/img/bakar-rahman-4.jpg">
+          <img src="../assets/img/person-bakar_rahman_03-4x3.jpg">
         </figure>
       </div>
       <div class="column is-half content is-medium">
@@ -142,7 +146,7 @@
       </div>
       <div class="column is-half">
         <figure class="image is-4by3">
-          <img src="../assets/img/bakar-rahman-5.jpg">
+          <img src="../assets/img/ppl-mobe_event_hk_01-4x3.jpg">
         </figure>
       </div>
     </div>
@@ -194,10 +198,10 @@
       </div>
       <div class="column is-7">
         <figure class="image is-5by3 has-space">
-          <img src="../assets/img/deborah-fb-comment.jpg">
+          <img src="../assets/img/ss_fb-deborah-5x3.jpg">
         </figure>
         <figure class="image is-2by1 has-space">
-          <img src="../assets/img/adeline-fb-comment.png">
+          <img src="../assets/img/ss_fb-adeline-2x1.png">
         </figure>
       </div>
     </div>
@@ -242,16 +246,16 @@
       </div>
       <div class="column is-half">
         <figure class="image is-3by2 has-space">
-          <img src="../assets/img/mobe-event-20160619-1.jpg">
+          <img src="../assets/img/ppl-mobe_event_20160619_01-3x2.jpg">
         </figure>
         <figure class="image is-3by2 has-space">
-          <img src="../assets/img/mobe-event-20160619-2.jpg">
+          <img src="../assets/img/ppl-mobe_event_20160619_02-3x2.jpg">
         </figure>
         <figure class="image is-5by3 has-space">
-          <img src="../assets/img/mobe-event-20160619-3.jpg">
+          <img src="../assets/img/ppl-mobe_event_20160619_03-3x2.jpg">
         </figure>
         <figure class="image is-3by2">
-          <img src="../assets/img/bakar-rahman-4.jpg">
+          <img src="../assets/img/ppl-mobe_event_hk_01-3x2.jpg">
         </figure>
       </div>
     </div>
@@ -408,29 +412,29 @@
       <p>It's as simple as 5 easy steps:</p>
     </div>
 
-    {% call featureRow(imageColumn=5, image='../assets/img/wifi-millionaire-product-16x9.png', imageSize='16x9') %}
+    {% call featureRow(imageColumn=5, image='../assets/img/product-wifi_millionaire_02-16x9.png', imageSize='16x9') %}
       <h4>STEP 1 - GET YOUR OWN INTERNET MARKETING SYSTEM IN A BOX STARTER KIT...</h4>
       <p>Join our private invite only high converting affiliate program, and 21 step Wifi training system.</p>
       <p>It's By APPLICATION ONLY. You can do that by <a href="{{ productURL }}">Clicking Here.</a></p>
     {% endcall %}
 
-    {% call featureRow(imageColumn=5, image='../assets/img/wifi-millionaire-screenshot-16x9.jpg', imageSize='16x9') %}
+    {% call featureRow(imageColumn=5, image='../assets/img/ss_product-wifi_millionaire-16x9.jpg', imageSize='16x9') %}
       <h4>STEP 2 - ONCE YOU'VE COMPLETED ALL STEPS, NOW START PROMOTING TO PROFITS.</h4>
       <p>Select from our ever expanding library of pre built high converting lead capture systems, or ready made sales funnels to promote.</p>
       <p>Simply follow the easy step-by-step instructions to start getting traffic, leads and sales to your business.</p>
     {% endcall %}
 
-    {% call featureRow(imageColumn=5, image='../assets/img/leads-prospects-customers-1x1.png') %}
+    {% call featureRow(imageColumn=5, image='../assets/img/clip-leads_prospects_customers-1x1.png') %}
       <h4>STEP 3 - PROSPECTS TO CUSTOMERS.</h4>
       <p>Follow our step by step traffic training videos, and drive leads into the system. This automatically turns strangers and website visitors into red hot repeat customers and sales.</p>
     {% endcall %}
 
-    {% call featureRow(imageColumn=5, image='../assets/img/call-center-1-3x2.jpg', imageSize='3x2') %}
+    {% call featureRow(imageColumn=5, image='../assets/img/clip-call_center_01-3x2.jpg', imageSize='3x2') %}
       <h4>STEP 4 - AUTOMATING SYSTEMS TO MAKE SALES</h4>
       <p>Our custom email campaigns will immediately start communicating with your leads. Our fully trained, professional telesales team will call up your leads, and build a relationship, deliver value, then sell them our high ticket programs.</p>
     {% endcall %}
 
-    {% call featureRow(imageColumn=5, image='../assets/img/phone-team-1-5x3.jpg', imageSize='5x3') %}
+    {% call featureRow(imageColumn=5, image='../assets/img/clip-phone_team_01-5x3.jpg', imageSize='5x3') %}
       <h3>STEP 5 - START MAKING COMMISSIONS...</h3>
       <p>Every time we make a sale for you, you earn a massive 50% commission! Earn automated commissions of $1,250, $3,300, $5,500 and $10,000 per sale!</p>
       <p>(Wired to your bank every 2 weeks).</p>
@@ -447,32 +451,32 @@
       <span class="has-text-danger">WHEN YOU GET STARTED TODAY</span>
     </h1>
 
-    {% call featureRow(imageColumn=5, image='../assets/img/wifi-millionaire-product-16x9.png', imageSize='16x9') %}
+    {% call featureRow(imageColumn=5, image='../assets/img/product-wifi_millionaire_02-16x9.png', imageSize='16x9') %}
       <h4>DONE FOR YOU DIRECT SALES SYSTEM</h4>
       <p>Instant access to the WiFi done for you direct sales system that deposits $1,200, $3,300, and $5,500 into your bank account (complete with 21 step lead generation &amp; training program).</p>
     {% endcall %}
 
-    {% call featureRow(imageColumn=5, image='../assets/img/phone-support-1-3x2.jpg', imageSize='3x2') %}
+    {% call featureRow(imageColumn=5, image='../assets/img/clip-phone_support_01-3x2.jpg', imageSize='3x2') %}
       <h4>DONE FOR YOU FULFILMENT, PAYMENTS AND CUSTOMER SERVICE</h4>
       <p>You'll get done for you product fulfilment, payment solutions and customer service so you can focus on the easy part, placing ads with our steps and getting leads.</p>
     {% endcall %}
 
-    {% call featureRow(imageColumn=5, image='../assets/img/phone-support-2-3x2.jpg', imageSize='3x2') %}
+    {% call featureRow(imageColumn=5, image='../assets/img/clip-phone_support_02-3x2.jpg', imageSize='3x2') %}
       <h4>PERSONAL BUSINESS SUCCESS COACH</h4>
       <p>Get access to a coach who will guide you through your journey so you will have someone by your side whenever you get stuck.</p>
     {% endcall %}
 
-    {% call featureRow(imageColumn=5, image='../assets/img/leads-prospects-customers-1x1.png') %}
+    {% call featureRow(imageColumn=5, image='../assets/img/clip-leads_prospects_customers-1x1.png') %}
       <h4>HIGH CONVERTING SALES FUNNELS</h4>
       <p>You'll have insider access to the MOST effective sales funnels and high ticket products online. These products are and funnels are private, and for members only.</p>
     {% endcall %}
 
-    {% call featureRow(imageColumn=5, image='../assets/img/traffic-plan-1-1x1.png') %}
+    {% call featureRow(imageColumn=5, image='../assets/img/clip-traffic_plan-1x1.png') %}
       <h4>30 DAY TRAFFIC PLAN</h4>
       <p>Access to the most cutting edge strategies to generate traffic online, including YouTube, Facebook and Google advertising plans to get the most leads, for the cheapest price.</p>
     {% endcall %}
 
-    {% call featureRow(imageColumn=5, image='../assets/img/wwn-1-4x3.jpg', imageSize='4x3') %}
+    {% call featureRow(imageColumn=5, image='../assets/img/clip-wwn-4x3.jpg', imageSize='4x3') %}
       <h4>DAILY VIDEOS, WEBINARS &amp; TRAINING FROM TOP EARNERS</h4>
       <p>You'll get motivational and tactical training &amp; strategies that are working right NOW from the Top Earning Experts in marketing.</p>
     {% endcall %}
@@ -489,7 +493,7 @@
     <div class="columns is-centered">
       <div class="column is-two-thirds">
         <figure class="image is-4x3">
-          <img src="../assets/img/internet-rockstar-product-4x3.png">
+          <img src="../assets/img/product-internet_rockstar-4x3.png">
         </figure>
       </div>
     </div>

@@ -3,7 +3,7 @@ import $ from 'zepto'
 function openModal (e) {
   const id = $(e.target).data('modal')
   const $e = $('#' + id)
-  $e.addClass('is-active').find('input[autofocus]').first().get(0).focus()
+  $e.addClass('is-active').find('input:not([type=hidden])').first().get(0).focus()
 }
 
 function closeModal (e) {
