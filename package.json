@@ -1,14 +1,14 @@
 {
-  "name": "imf-2018",
+  "name": "online-commissioner",
   "version": "1.0.0",
-  "description": "IMF Brisbane Gold Coast 2018",
+  "description": "OnineCommissioner.com Pages and E-mails",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "http-server"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/esgiar/imf-2018.git"
+    "url": "https://github.com/esgiar/onlinecommissioner.git"
   },
   "author": "zzzaim",
   "license": "UNLICENSED",
@@ -16,9 +16,6 @@
     "url": "https://github.com/esgiar/imf-2018/issues"
   },
   "homepage": "https://github.com/esgiar/imf-2018#readme",
-  "scripts": {
-    "start": "http-server"
-  },
   "devDependencies": {
     "autoprefixer": "^8.3.0",
     "babel-core": "^6.26.0",
@@ -28,6 +25,7 @@
     "html-minifier": "^3.5.14",
     "http-server": "^0.11.1",
     "imagemin-cli": "^3.0.0",
+    "mjml": "^4.0.3",
     "nunjucks": "^3.1.2",
     "postcss-cli": "^5.0.0",
     "rollup": "^0.57.1",
