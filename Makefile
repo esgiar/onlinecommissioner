@@ -28,8 +28,6 @@ CSS_DEP += $(shell find node_modules/bulma -name '*.scss' -o -name '*.sass')
 # Javascript
 JS_SRC := $(shell find scripts -name '*.js')
 JS_DST := $(JS_SRC:scripts/%.js=public/assets/js/%.js)
-JS_LIB := node_modules/zepto/dist/zepto.js \
-          node_modules/moment/min/moment.min.js
 
 # Other static files
 STAT_SRC := $(shell find static -type f)
