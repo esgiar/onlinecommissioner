@@ -16,6 +16,10 @@ function joinURI (base, path) {
   return base.replace(/\/+$/, '') + '/' + path.replace(/^\/+/, '')
 }
 
+function replace (str, regExps) {
+  return regExps.reduce((s, re) => s.replace(re[0], re[1]), str)
+}
+
 const nodeEnv = process.env.NODE_ENV || 'development'
 const cwd = process.cwd()
 const tplFile = process.argv[2]
@@ -27,9 +31,21 @@ const context = _(process.argv)
   .filter()
   .reduce((ctx, data) => _.merge({}, ctx, data), {})
 
+const baseURL = context.baseURL || ''
+const staticURL = context.staticURL || ''
+const regexps = [
+  [/^pages\//, ''],
+  [/\.njk$/, '.html'],
+  [/index\.html/, ''],
+  [/\\+/g, '']
+]
+
 context.env = nodeEnv
-context.uri = (path) => joinURI(context.baseURL || '', path)
-context.s = (path) => joinURI(context.staticURL || '', path)
+context.path = replace(tplFile, regexps)
+context.meta = context.meta || {}
+context.meta.url = joinURI(baseURL, context.path)
+context.uri = (path) => joinURI(baseURL, path)
+context.s = (path) => joinURI(staticURL, path)
 
 nunjucks.render(tplFile, context, function (err, html) {
   if (err) {

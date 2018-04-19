@@ -1,5 +1,8 @@
 {
-  "name": "Online Commissioner",
+  "meta": {
+    "site": "Online Commissioner",
+    "twitter": "@oncommissioner"
+  },
   "email": "bakar.rahman@onlinecommissioner.com",
   "author": "Bakar Rahman",
   "affiliateID": "2154964"

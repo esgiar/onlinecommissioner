@@ -86,7 +86,7 @@ emails/%.json::
 
 public/%.html: pages/%.json pages/%.njk html-minifier.json $(CONTEXT) $(TPLS)
 	@mkdir -p $(@D)
-	njs pages/$*.njk $(CONTEXT) pages/$(*D)/index.json pages/$*.json \
+	njs pages/$*.njk $(CONTEXT) pages/$*.json \
 	  | html-minifier --config-file html-minifier.json \
 	  > $@
 

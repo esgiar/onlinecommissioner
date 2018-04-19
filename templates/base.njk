@@ -2,12 +2,35 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ title }}</title>
-  <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js">
-  </script>
-  {% block head %}{% endblock %}
+  {% block head %}
+    <meta charset="utf-8">
+
+    <title>{{ meta.title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{ meta.description }}" />
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="{{ meta.site }}">
+    <meta name="twitter:title" content="{{ meta.title }}">
+    <meta name="twitter:description" content="{{ meta.description }}">
+
+    {% if meta.twitter %}
+      <meta name="twitter:creator" content="{{ meta.twitter }}">
+    {% endif %}
+
+    {% if meta.image %}
+      <meta name="twitter:image" content="{{ s(meta.image) }}">
+      <meta property="og:image" content="{{ s(meta.image) }}" />
+    {% endif %}
+
+    <meta property="og:title" content="{{ meta.title }}" />
+    <meta property="og:type" content="{{ meta.type | d('article') }}" />
+    <meta property="og:url" content="{{ meta.url }}" />
+    <meta property="og:description" content="{{ meta.description }}" />
+    <meta property="og:site_name" content="{{ meta.site }}" />
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+  {% endblock %}
 </head>
 
 <body>
