@@ -4,20 +4,12 @@
 {% set listToken = "6LJ2R" %}
 
 {% extends "./templates/base.njs" %}
+{% from "../../templates/macros/header.njs" import header %}
 {% from "../../templates/macros/countdown.njs" import countdown %}
+{% from "../../templates/macros/action_button.njs" import actionButton %}
 
 {% block body %}
-  <header class="section is-paddingless has-background-dark">
-    <div class="container is-clearfix">
-      <div class="columns">
-        <div class="column is-2 is-offset-8">
-          <figure class="image is-2by1 has-space-top">
-            <img src="../assets/img/logo-online_commissioner-2x1.png">
-          </figure>
-        </div>
-      </div>
-    </div>
-  </header>
+  {{ header('dark', offset=8) }}
 
   <section class="hero is-dark">
     <div class="hero-body">

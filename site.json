@@ -1,7 +1,8 @@
 {
   "_base": {
     "title": "Online Commissioner",
-    "email": "contact@onlinecommissioner.com"
+    "email": "contact@onlinecommissioner.com",
+    "affiliateID": "2154964"
   },
   "_development": {
     "base": "http://dev.onlinecommissioner.com",
