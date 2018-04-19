@@ -1,10 +1,6 @@
 {% set title = "Terms and Conditions" %}
-{% extends "../templates/base.njk" %}
 
-{% block head %}
-  <link rel="stylesheet" href="assets/css/bulma.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
-{% endblock %}
+{% extends "../templates/document.njk" %}
 
 {% block body %}
   <section class="section">
@@ -94,4 +90,6 @@
       </article>
     </div>
   </section>
+
+  {% include "../templates/footer.njk" %}
 {% endblock %}
