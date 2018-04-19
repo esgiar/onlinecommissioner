@@ -1,51 +1,75 @@
-<mjml>
-  <mj-head>
-    <mj-title>Welcome [[name]]! Your EnRICHment E-Book is ready!</mj-title>
-    <mj-attributes>
-      <mj-class name="heading" color="#222" align="center" font-size="32px" font-weight="bold" line-height="48px"/>
-      <mj-text color="#535554" />
-      <mj-all font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16px" line-height="24px" />
-      <mj-section padding="10px 0" />
-    </mj-attributes>
-  </mj-head>
+{% set title = "Your Enrichment eBook is ready!" %}
+{% set pdfURL = static + "/downloads/enrichment-2018.pdf" %}
 
-  <mj-body>
-    <mj-section background-color="#eee" full-width="full-width">
-      <mj-column>
-        <mj-image width="110" src="{{ static }}/img/logo-online_commissioner-2x1.png"/>
-      </mj-column>
-    </mj-section>
+{% extends "../../templates/email/base.njk" %}
 
-    <mj-section background-color="#fff" background-url="{{ static }}/img/ui-email_halved_bg-x.png" background-repeat="repeat-x" full-width="full-width">
-      <mj-column>
-        <mj-image width="300" src="{{ static }}/img/product-enrichment_ebook-3x4.jpg" />
-      </mj-column>
-    </mj-section>
+{% macro downloadButton() %}
+  <mj-section>
+    <mj-column>
+      <mj-button href="{{ pdfURL }}" background-color="#F44336">
+        Download your PDF
+      </mj-button>
+    </mj-column>
+  </mj-section>
+{% endmacro %}
 
-    <mj-section>
-      <mj-column>
-        <mj-text mj-class="heading">
-          Your Enrichment eBook is ready
-        </mj-text>
-      </mj-column>
-    </mj-section>
+{% block body %}
+  <mj-section background-color="#eee" full-width="full-width">
+    <mj-column>
+      <mj-image width="110" src="{{ static }}/img/logo-online_commissioner-2x1.png"/>
+    </mj-column>
+  </mj-section>
 
-    <mj-section>
-      <mj-column width="400">
-        <mj-text>
-          Your eBook PDF file is ready to be downloaded.
-          <br/>
-          I hope you will find the information useful &amp; take action to implement it in your life.
-        </mj-text>
-      </mj-column>
-    </mj-section>
+  <mj-section background-color="#fff" background-url="{{ static }}/img/ui-email_halved_bg-x.png" background-repeat="repeat-x" full-width="full-width">
+    <mj-column>
+      <mj-image width="300" src="{{ static }}/img/product-enrichment_ebook-3x4.jpg" />
+    </mj-column>
+  </mj-section>
 
-    <mj-section>
-      <mj-column>
-        <mj-button href="#" background-color="#F44336">
-          Download your PDF
-        </mj-button>
-      </mj-column>
-    </mj-section>
-  </mj-body>
-</mjml>
+  {{ downloadButton() }}
+
+  <mj-section>
+    <mj-column width="520">
+      <mj-text>
+        <p>Your eBook PDF file is ready to be downloaded. I hope you will find the information useful &amp; take action to implement it in your life.</p> 
+        <p>Before you dive into the book and start applying it to success, I’d like to take a second to say hello and welcome you. I’m really excited and grateful you’ve decided to read my eBook.</p>
+        <p>Moving forward, here’s what you can expect from me.</p>
+        <p>I’ll be sending you emails about new eBooks, courses, training resources and cool ideas I’ve come across that will benefit you.</p>
+        <p>Sounds good? Great. Here’s how we get started...</p>
+
+        <h2>Make sure you’re getting my emails</h2>
+        <p>All my emails are from:</p>
+        <p><a href="mailto:bakar.rahman@onlinecommissioner.com">bakar.rahman@onlinecommissioner.com</a></p>
+        <p>If you aren’t getting the emails, you’ll miss out on the important updates and new content about what’s working now in this industry.</p>
+        <p>Follow the whitelisting instructions on this page. Go and do that now. I’ll wait...</p>
+        <p><a href="http://onlinecommissioner.com/email-white-list">http://onlinecommissioner.com/email-white-list</a></p>
+
+        <h2>Let’s get social</h2>
+        <p>I invite you to join (and like) my Facebook page:</p>
+        <p><a href="https://www.facebook.com/my.online.commissioner">https://www.facebook.com/my.online.commissioner</a></p>
+      </mj-text>
+    </mj-column>
+  </mj-section>
+
+  {{ downloadButton() }}
+
+  <mj-section full-width="full-width" background-color="#eee">
+    <mj-column width="520">
+      <mj-text>
+        <p>Now, a quick introduction to myself.</p>
+        <p>I’m Bakar Rahman, CEO and founder of OnlineCommissioner.com. I’m a retired self-employed marketing and business consultant, create a pension, earning a full-time income from the internet.</p>
+        <p>Now a very driven and passionate entrepreneur who is out to teach other ordinary people to do the same.</p>
+        <p>My goal is to inspire others in making their retirement the best time of their lives.</p>
+        <p>Now all you need to do is stick with me, read my daily email series, and TAKE ACTION.</p>
+        <p>Your next step after this is to watch the Free Video about the WiFi Millionaire book.</p>
+        <p>If you have any questions about this whole thing - like whether it's real, or whatever is on your mind... you can always reach out at Facebook: <a href="https://www.facebook.com/my.online.commissioner">https://www.facebook.com/my.online.commissioner</a></p>
+      </mj-text>
+    </mj-column>
+  </mj-section>
+
+  <mj-section full-width="full-width" background-color="#eee" padding-top="0">
+    <mj-column>
+      <mj-image width="300" src="{{ static }}/img/person-bakar_rahman_01-4x3.jpg" />
+    </mj-column>
+  </mj-section>
+{% endblock %}

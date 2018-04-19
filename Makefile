@@ -75,7 +75,7 @@ public/emails/%.html: emails/%.mjml
 	@mkdir -p $(@D)
 	mjml $< -o $@
 
-emails/%.mjml: emails/%.njk $(SITE) emails/%.json
+emails/%.mjml: emails/%.njk $(SITE) emails/%.json $(TPLS)
 	njs $< $(SITE) emails/$(*D)/index.json emails/$*.json > $@
 
 emails/%.json::

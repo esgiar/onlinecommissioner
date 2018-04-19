@@ -1,0 +1,20 @@
+<mjml>
+  <mj-head>
+    <mj-title>{{ title }}</mj-title>
+    <mj-attributes>
+      <mj-text color="#535554" />
+      <mj-class name="heading" color="#222" align="center"
+                font-size="32px"
+                font-weight="bold" />
+      <mj-all font-family="Helvetica Neue, Helvetica, Arial, sans-serif"
+              font-size="16px"
+              line-height="1.5" />
+      <mj-section padding="10px 0" />
+      {% block attributes %}{% endblock %}
+    </mj-attributes>
+  </mj-head>
+
+  <mj-body>
+    {% block body %}{% endblock %}
+  </mj-body>
+</mjml>
