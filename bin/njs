@@ -4,25 +4,37 @@ const _ = require('lodash')
 const Path = require('path')
 const nunjucks = require('nunjucks')
 
+function loadContext (file) {
+  try {
+    return require(file)
+  } catch (e) {
+    return null
+  }
+}
+
+function joinURI (base, path) {
+  return base.replace(/\/+$/, '') + '/' + path.replace(/^\/+/, '')
+}
+
 const nodeEnv = process.env.NODE_ENV || 'development'
-const configKey = '_' + nodeEnv
 const cwd = process.cwd()
 const tplFile = process.argv[2]
-const dataFiles = process.argv.slice(3).map((file) => Path.resolve(cwd, file))
-const context = _.uniq(dataFiles).reduce((ctx, file) => {
-  let data = {}
-  try {
-    data = require(file)
-  } catch (e) {}
-  return Object.assign({}, ctx, data._base, data[configKey] || data)
-}, {})
+const context = _(process.argv)
+  .slice(3)
+  .map((file) => Path.resolve(cwd, file))
+  .uniq()
+  .map(loadContext)
+  .filter()
+  .reduce((ctx, data) => _.merge({}, ctx, data), {})
 
-context.node_env = nodeEnv
+context.env = nodeEnv
+context.uri = (path) => joinURI(context.baseURL || '', path)
+context.s = (path) => joinURI(context.staticURL || '', path)
 
-nunjucks.render(tplFile, context, function (err, res) {
+nunjucks.render(tplFile, context, function (err, html) {
   if (err) {
     console.error(err)
   } else {
-    console.log(res)
+    process.stdout.write(html)
   }
 })

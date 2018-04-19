@@ -1,5 +1,5 @@
 {% set title = "Your Enrichment eBook is ready!" %}
-{% set pdfURL = static + "/downloads/enrichment-2018.pdf" %}
+{% set pdfURL = s("downloads/enrichment-2018.pdf") %}
 
 {% extends "../../templates/email/base.njk" %}
 
@@ -16,13 +16,13 @@
 {% block body %}
   <mj-section background-color="#eee" full-width="full-width">
     <mj-column>
-      <mj-image width="110" src="{{ static }}/img/logo-online_commissioner-2x1.png"/>
+      <mj-image width="110" src="{{ s('img/logo-online_commissioner-2x1.png') }}"/>
     </mj-column>
   </mj-section>
 
-  <mj-section background-color="#fff" background-url="{{ static }}/img/ui-email_halved_bg-x.png" background-repeat="repeat-x" full-width="full-width">
+  <mj-section background-color="#fff" background-url="{{ s('img/ui-email_halved_bg-x.png') }}" background-repeat="repeat-x" full-width="full-width">
     <mj-column>
-      <mj-image width="300" src="{{ static }}/img/product-enrichment_ebook-3x4.jpg" />
+      <mj-image width="300" src="{{ s('img/product-enrichment_ebook-3x4.jpg') }}" />
     </mj-column>
   </mj-section>
 
@@ -69,7 +69,7 @@
 
   <mj-section full-width="full-width" background-color="#eee" padding-top="0">
     <mj-column>
-      <mj-image width="300" src="{{ static }}/img/person-bakar_rahman_01-4x3.jpg" />
+      <mj-image width="300" src="{{ s('img/person-bakar_rahman_01-4x3.jpg') }}" />
     </mj-column>
   </mj-section>
 {% endblock %}

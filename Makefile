@@ -1,10 +1,13 @@
 # Customizable variables (set in `config.mk` file)
-PATH   := ./node_modules/.bin:./bin:$(PATH)
-PUBLIC := public
-ASSETS := $(PUBLIC)/assets
-SITE   := site.json
+NODE_ENV ?= development
+PATH     := ./node_modules/.bin:./bin:$(PATH)
+PUBLIC   := public
+ASSETS   := $(PUBLIC)/assets
 
 include config.mk
+
+# Base template context
+CONTEXT := site.json site.$(NODE_ENV).json
 
 # HTML Pages
 TPLS  := $(shell find templates -name '*.njk')
@@ -19,7 +22,7 @@ EMAILS := $(MJMLS:emails/%.njk=public/emails/%.html)
 
 # CSS
 CSS_SRC := $(shell find pages -name 'index.scss')
-CSS_DST := $(CSS_SRC:pages/%.scss=public/%.css)
+CSS_DST := $(CSS_SRC:pages/%.scss=public/assets/%.css)
 CSS_DST := $(filter-out $(IGNORE_PAGES),$(CSS_DST))
 CSS_DST += public/assets/css/bulma.min.css
 CSS_DEP := $(shell find pages -name '*.scss' ! -name 'index.scss')
@@ -53,7 +56,7 @@ define rollup =
 	rollup -c -i $< -o $@
 endef
 
-all: html emails css js static
+all: static css js html emails
 
 html: $(PAGES)
 
@@ -75,15 +78,15 @@ public/emails/%.html: emails/%.mjml
 	@mkdir -p $(@D)
 	mjml $< -o $@
 
-emails/%.mjml: emails/%.njk $(SITE) emails/%.json $(TPLS)
-	njs $< $(SITE) emails/$(*D)/index.json emails/$*.json > $@
+emails/%.mjml: emails/%.njk emails/%.json $(CONTEXT) $(TPLS)
+	njs $< $(CONTEXT) emails/$(*D)/index.json emails/$*.json > $@
 
 emails/%.json::
 	@touch $@
 
-public/%.html: $(SITE) pages/%.json pages/%.njk html-minifier.json $(TPLS)
+public/%.html: pages/%.json pages/%.njk html-minifier.json $(CONTEXT) $(TPLS)
 	@mkdir -p $(@D)
-	njs pages/$*.njk $(SITE) pages/$(*D)/index.json pages/$*.json \
+	njs pages/$*.njk $(CONTEXT) pages/$(*D)/index.json pages/$*.json \
 	  | html-minifier --config-file html-minifier.json \
 	  > $@
 
@@ -97,7 +100,7 @@ public/assets/css/bulma.min.css: node_modules/bulma/css/bulma.min.css
 	@mkdir -p $(@D)
 	cp $< $@
 
-public/%.css: pages/%.scss $(CSS_DEP)
+public/assets/%.css: pages/%.scss $(CSS_DEP)
 	@mkdir -p $(@D)
 	sass --load-path=node_modules $< | postcss > $@
 

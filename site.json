@@ -1,16 +1,6 @@
 {
-  "_base": {
-    "title": "Online Commissioner",
-    "email": "bakar.rahman@onlinecommissioner.com",
-    "author": "Bakar Rahman",
-    "affiliateID": "2154964"
-  },
-  "_development": {
-    "base": "http://dev.onlinecommissioner.com",
-    "static": "http://dev.onlinecommissioner.com/assets"
-  },
-  "_production": {
-    "base": "http://onlinecommissioner.com",
-    "static": "http://onlinecommissioner.com/assets"
-  }
+  "name": "Online Commissioner",
+  "email": "bakar.rahman@onlinecommissioner.com",
+  "author": "Bakar Rahman",
+  "affiliateID": "2154964"
 }

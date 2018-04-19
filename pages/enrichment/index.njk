@@ -17,7 +17,7 @@
         <div class="columns is-centered">
           <div class="column is-3">
             <figure class="image is-3by4">
-              <img src="../assets/img/product-enrichment_ebook-3x4.jpg">
+              <img src="{{ s('img/product-enrichment_ebook-3x4.jpg') }}">
             </figure>
           </div>
           <div class="column is-4 has-text-centered">
@@ -76,7 +76,7 @@
         </div>
         <div class="column is-3 has-text-centered">
           <figure class="image is-4by3 has-space has-space-top is-medium">
-            <img src="../assets/img/person-bakar_rahman_01-4x3.jpg">
+            <img src="{{ s('img/person-bakar_rahman_01-4x3.jpg') }}">
           </figure>
 
           <button class="button is-primary is-size-4 has-text-weight-bold open-modal" data-modal="enrichment-form">
@@ -147,8 +147,8 @@
     <button class="modal-close is-large" aria-label="close"></button>
   </div>
 
-  <script src="../assets/js/zepto.min.js"></script>
-  <script src="../assets/js/moment.min.js"></script>
-  <script src="../assets/js/modal.js"></script>
-  <script src="../assets/js/countdown.js"></script>
+  <script src="{{ s('js/zepto.min.js') }}"></script>
+  <script src="{{ s('js/moment.min.js') }}"></script>
+  <script src="{{ s('js/modal.js') }}"></script>
+  <script src="{{ s('js/countdown.js') }}"></script>
 {% endblock %}
