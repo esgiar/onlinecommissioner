@@ -3,10 +3,10 @@
 {% set confirmURL = "http://dev.onlinecommissioner.com/enrichment/thankyou.html" %}
 {% set listToken = "6LJ2R" %}
 
-{% extends "./templates/base.njs" %}
-{% from "../../templates/macros/header.njs" import header %}
-{% from "../../templates/macros/countdown.njs" import countdown %}
-{% from "../../templates/macros/action_button.njs" import actionButton %}
+{% extends "./templates/base.njk" %}
+{% from "../../templates/macros/header.njk" import header %}
+{% from "../../templates/macros/countdown.njk" import countdown %}
+{% from "../../templates/macros/action_button.njk" import actionButton %}
 
 {% block body %}
   {{ header('dark', offset=8) }}
@@ -87,7 +87,7 @@
     </div>
   </div>
 
-  {% include "../../templates/footer.njs" %}
+  {% include "../../templates/footer.njk" %}
 
   <div class="modal" id="enrichment-form">
     <div class="modal-background"></div>

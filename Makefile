@@ -7,15 +7,15 @@ SITE   := site.json
 include config.mk
 
 # HTML Pages
-TPLS  := $(shell find templates -name '*.njs')
-TPLS  += $(shell find pages -name '*.njs' -path '*/templates/*')
-PAGES := $(shell find pages -name '*.njs' -not -path '*/templates/*')
-PAGES := $(PAGES:pages/%.njs=public/%.html)
+TPLS  := $(shell find templates -name '*.njk')
+TPLS  += $(shell find pages -name '*.njk' -path '*/templates/*')
+PAGES := $(shell find pages -name '*.njk' -not -path '*/templates/*')
+PAGES := $(PAGES:pages/%.njk=public/%.html)
 PAGES := $(filter-out $(IGNORE_PAGES),$(PAGES))
 
 # HTML Emails
-MJMLS  := $(shell find emails -name '*.njs')
-EMAILS := $(MJMLS:emails/%.njs=public/emails/%.html)
+MJMLS  := $(shell find emails -name '*.njk')
+EMAILS := $(MJMLS:emails/%.njk=public/emails/%.html)
 
 # CSS
 CSS_SRC := $(shell find pages -name 'index.scss')
@@ -75,15 +75,15 @@ public/emails/%.html: emails/%.mjml
 	@mkdir -p $(@D)
 	mjml $< -o $@
 
-emails/%.mjml: emails/%.njs $(SITE) emails/%.json
+emails/%.mjml: emails/%.njk $(SITE) emails/%.json
 	njs $< $(SITE) emails/$(*D)/index.json emails/$*.json > $@
 
 emails/%.json::
 	@touch $@
 
-public/%.html: $(SITE) pages/%.json pages/%.njs html-minifier.json $(TPLS)
+public/%.html: $(SITE) pages/%.json pages/%.njk html-minifier.json $(TPLS)
 	@mkdir -p $(@D)
-	njs pages/$*.njs $(SITE) pages/$(*D)/index.json pages/$*.json \
+	njs pages/$*.njk $(SITE) pages/$(*D)/index.json pages/$*.json \
 	  | html-minifier --config-file html-minifier.json \
 	  > $@
 

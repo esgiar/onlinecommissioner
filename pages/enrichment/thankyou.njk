@@ -1,12 +1,12 @@
 {% set title = "Special Access - WiFi Millionaire" %}
 {% set productURL = "http://track.mobetrack.com/aff_c?offer_id=1724&aff_id=" + affiliateID + "&aff_sub=enrichment_ebook&url_id=3452" %}
 
-{% extends "./templates/base.njs" %}
-{% from "../../templates/macros/header.njs" import header %}
-{% from "../../templates/macros/section.njs" import section, heading, subHeading %}
-{% from "../../templates/macros/features.njs" import feature %}
-{% from "../../templates/macros/checklist.njs" import checkItem %}
-{% from "../../templates/macros/action_button.njs" import actionButton %}
+{% extends "./templates/base.njk" %}
+{% from "../../templates/macros/header.njk" import header %}
+{% from "../../templates/macros/section.njk" import section, heading, subHeading %}
+{% from "../../templates/macros/features.njk" import feature %}
+{% from "../../templates/macros/checklist.njk" import checkItem %}
+{% from "../../templates/macros/action_button.njk" import actionButton %}
 
 {% block body %}
   {{ header() }}
@@ -590,6 +590,6 @@
     </h3>
   {% endcall %}
 
-  {% include "../../templates/footer.njs" %}
+  {% include "../../templates/footer.njk" %}
 
 {% endblock %}
