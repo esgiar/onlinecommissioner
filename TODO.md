@@ -1,4 +1,3 @@
-- Design: add GeoIP country code auto-fill
 - DevOps: register for CloudFlare
 - DevOps: register for MailJet
 - DevOps: create email address

@@ -124,7 +124,7 @@
               Phone Number (with Country Code)
             </label>
             <p class="control has-icons-left">
-              <input class="input is-medium" type="tel" name="custom_phone" title="Example: +6012345678">
+              <input class="input is-medium autofill-country-code" type="tel" name="custom_phone" title="Example: +6012345678">
               <span class="icon is-small is-left">
                 <i class="fas fa-phone"></i>
               </span>
@@ -146,8 +146,12 @@
     <button class="modal-close is-large" aria-label="close"></button>
   </div>
 
+  <script>
+    window.GEOIP_SCRIPT_URL = 'http://onlinecommissioner.com/geoip.php';
+  </script>
   <script src="{{ s('js/zepto.min.js') }}"></script>
   <script src="{{ s('js/moment.min.js') }}"></script>
   <script src="{{ s('js/modal.js') }}"></script>
+  <script src="{{ s('js/country.js') }}"></script>
   <script src="{{ s('js/countdown.js') }}"></script>
 {% endblock %}
