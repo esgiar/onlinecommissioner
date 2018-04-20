@@ -1,6 +1,3 @@
-- [DevOps] register for analytics service (GA? Heap? Amplitude?)
-- [Design] insert analytics tracking code
+- [Design] add event tracking
 - [Funnel] complete "enrichment ebook" funnel
-- [DevOps] re-structure hosting file system
-- [DevOps] create assets.onlinecommissioner.com subdomain
 - [DevOps] deploy
