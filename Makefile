@@ -16,9 +16,10 @@ PAGES := $(shell find pages -name '*.njk' -not -path '*/templates/*')
 PAGES := $(PAGES:pages/%.njk=public/%.html)
 PAGES := $(filter-out $(IGNORE_PAGES),$(PAGES))
 
-# HTML Emails
-MJMLS  := $(shell find emails -name '*.njk')
-EMAILS := $(MJMLS:emails/%.njk=public/emails/%.html)
+# Emails templates
+EM_TPL := $(shell find emails -name '*.njk')
+EM_MJM := $(EM_TPL:emails/%.njk=emails/%.mjml)
+EM_HTM := $(EM_MJM:emails/%.mjml=public/emails/%.html)
 
 # CSS
 CSS_SRC := $(shell find pages -name 'index.scss')
@@ -60,7 +61,7 @@ all: static css js html emails
 
 html: $(PAGES)
 
-emails: $(EMAILS)
+emails: $(EM_MJM) $(EM_HTM)
 
 css: $(CSS_DST)
 
@@ -79,7 +80,9 @@ public/emails/%.html: emails/%.mjml
 	mjml $< -o $@
 
 emails/%.mjml: emails/%.njk emails/%.json $(CONTEXT) $(TPLS)
-	njs $< $(CONTEXT) emails/$(*D)/index.json emails/$*.json > $@
+	njs $< $(CONTEXT) emails/$(*D)/index.json emails/$*.json \
+	  | html-beautify -m 1 -s 2 -f - \
+	  > $@
 
 emails/%.json::
 	@touch $@

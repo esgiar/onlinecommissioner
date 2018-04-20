@@ -1,2 +1,5 @@
-- [Funnel] complete "enrichment ebook" funnel <20/04/2018 08:03>
+- [Build]  Build to pages/[domain] directory (fix problem of node env)
+- [DevOps] register for analytics service (GA? Heap? Amplitude?)
+- [Design] insert analytics tracking code
+- [Funnel] complete "enrichment ebook" funnel
 - [DevOps] deploy
