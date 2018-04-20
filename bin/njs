@@ -3,14 +3,7 @@
 const _ = require('lodash')
 const Path = require('path')
 const nunjucks = require('nunjucks')
-
-function loadContext (file) {
-  try {
-    return require(file)
-  } catch (e) {
-    return null
-  }
-}
+const loadContext = require('./shared').loadContext
 
 function joinURI (base, path) {
   return base.replace(/\/+$/, '') + '/' + path.replace(/^\/+/, '')

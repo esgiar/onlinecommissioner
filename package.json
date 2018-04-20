@@ -4,7 +4,7 @@
   "description": "OnineCommissioner.com Pages and E-mails",
   "main": "index.js",
   "scripts": {
-    "start": "http-server"
+    "start": "make server"
   },
   "repository": {
     "type": "git",

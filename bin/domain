@@ -1,0 +1,19 @@
+#!/usr/bin/env node
+
+const _ = require('lodash')
+const Url = require('url')
+const Path = require('path')
+const loadContext = require('./shared').loadContext
+
+const cwd = process.cwd()
+const context = _(process.argv)
+  .slice(3)
+  .map((file) => Path.resolve(cwd, file))
+  .uniq()
+  .map(loadContext)
+  .filter()
+  .reduce((ctx, data) => _.merge({}, ctx, data), {})
+
+const url = Url.parse(context.baseURL)
+
+process.stdout.write(url.hostname)
