@@ -3,5 +3,10 @@
     "title": "enRICHment eBook",
     "description": "Free enRICHment eBook: How to achieve success from your very own home-based online business",
     "image": "product-enrichment_ebook-3x4.jpg" 
+  },
+  "form": {
+    "url": "https://hooks.zapier.com/hooks/catch/3154330/fib7bv/",
+    "confirmURL": "http://dev.onlinecommissioner.com/enrichment/thankyou.html",
+    "listID": "9789"
   }
 }

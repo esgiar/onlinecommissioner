@@ -1,7 +1,3 @@
-{% set formURL = "https://app.getresponse.com/add_subscriber.html" %}
-{% set confirmURL = "http://dev.onlinecommissioner.com/enrichment/thankyou.html" %}
-{% set listToken = "6LJ2R" %}
-
 {% extends "./templates/base.njk" %}
 {% from "../../templates/macros/header.njk" import header %}
 {% from "../../templates/macros/countdown.njk" import countdown %}
@@ -96,7 +92,7 @@
         <h2 class="subtitle">
           Please enter your details correctly to claim your special access.
         </h2>
-        <form action="{{ formURL }}" accept-charset="utf-8" method="post">
+        <form action="{{ form.url }}" accept-charset="utf-8" method="post" class="ajax">
           <div class="field">
             <label class="label">
               Name <span class="has-text-danger">*</span>
@@ -124,7 +120,7 @@
               Phone Number (with Country Code)
             </label>
             <p class="control has-icons-left">
-              <input class="input is-medium autofill-country-code" type="tel" name="custom_phone" title="Example: +6012345678">
+              <input class="input is-medium autofill-country-code" type="tel" name="phone" title="Example: +6012345678">
               <span class="icon is-small is-left">
                 <i class="fas fa-phone"></i>
               </span>
@@ -138,8 +134,8 @@
               Send me the E-Book!
             </button>
           </div>
-          <input type="hidden" name="campaign_token" value="{{ listToken }}" />
-          <input type="hidden" name="thankyou_url" value="{{ confirmURL }}"/>
+          <input type="hidden" name="list_id" value="{{ form.listID }}" />
+          <input type="hidden" name="confirm_url" value="{{ form.confirmURL }}"/>
         </form>
       </div>
     </div>
@@ -151,6 +147,7 @@
   </script>
   <script src="{{ s('js/zepto.min.js') }}"></script>
   <script src="{{ s('js/moment.min.js') }}"></script>
+  <script src="{{ s('js/form.js') }}"></script>
   <script src="{{ s('js/modal.js') }}"></script>
   <script src="{{ s('js/country.js') }}"></script>
   <script src="{{ s('js/countdown.js') }}"></script>

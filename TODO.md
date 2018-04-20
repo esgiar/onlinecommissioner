@@ -1,5 +1,2 @@
-- [DevOps] register for CloudFlare
-- [DevOps] register for MailJet
-- [Misc]   create email address
-- [Funnel] complete "enrichment ebook" funnel
+- [Funnel] complete "enrichment ebook" funnel <20/04/2018 08:03>
 - [DevOps] deploy
