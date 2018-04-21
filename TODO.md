@@ -1,2 +1,1 @@
-- [Funnel] complete "enrichment ebook" funnel
-- [DevOps] deploy: production
+- [DevOps] Use MailJet Premium for autoresponding, not Zapier
