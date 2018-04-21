@@ -134,8 +134,12 @@
               Send me the E-Book!
             </button>
           </div>
-          <input type="hidden" name="list_id" value="{{ form.listID }}" />
           <input type="hidden" name="confirm_url" value="{{ uri(form.confirmURL) }}"/>
+          <input type="hidden" name="list_id" value="{{ form.listID }}" />
+          {% if form.email %}
+          <input type="hidden" name="email_template_id" value="{{ form.email.templateID }}" />
+          <input type="hidden" name="email_subject" value="{{ form.email.subject }}" />
+          {% endif %}
         </form>
       </div>
     </div>

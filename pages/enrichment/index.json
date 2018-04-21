@@ -1,12 +1,21 @@
 {
   "meta": {
-    "title": "enRICHment eBook",
-    "description": "Free enRICHment eBook: How to achieve success from your very own home-based online business",
-    "image": "product-enrichment_ebook-3x4.jpg" 
+    "title": "Enrichment eBook: How to achieve success from your very own home-based online business",
+    "description": "FREE Enrichment eBook: How to achieve success from your very own home-based online business. Read how I enrich myself after making the transition from a traditional to an online entrepreneur.",
+    "image": {
+      "url": "img/product-enrichment_ebook-1x2.jpg",
+      "width": "612",
+      "height": "792"
+    },
+    "app_id": "249846435584924"
   },
   "form": {
-    "url": "https://hooks.zapier.com/hooks/catch/3154330/fib7bv/",
+    "url": "https://hooks.zapier.com/hooks/catch/3154330/fszc27/",
     "confirmURL": "enrichment/thankyou.html",
-    "listID": "9789"
+    "listID": "10637",
+    "email": {
+      "templateID": "366804",
+      "subject": "Welcome{% if data:name:false %} {{ data:name }}{% endif %}! Your Enrichment eBook is ready!"
+    }
   }
 }

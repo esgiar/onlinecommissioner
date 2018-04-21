@@ -19,8 +19,12 @@
     {% endif %}
 
     {% if meta.image %}
-      <meta name="twitter:image" content="{{ s(meta.image) }}">
-      <meta property="og:image" content="{{ s(meta.image) }}" />
+      <meta name="twitter:image" content="{{ s(meta.image.url or meta.image) }}">
+      <meta property="og:image" content="{{ s(meta.image.url or meta.image) }}" />
+      {% if meta.image.width and meta.image.height %}
+        <meta property="og:image:width" content="{{ meta.image.width }}" />
+        <meta property="og:image:height" content="{{ meta.image.height }}" />
+      {% endif %}
     {% endif %}
 
     <meta property="og:title" content="{{ meta.title }}" />
@@ -28,6 +32,9 @@
     <meta property="og:url" content="{{ meta.url }}" />
     <meta property="og:description" content="{{ meta.description }}" />
     <meta property="og:site_name" content="{{ meta.site }}" />
+    {% if meta.app_id %}
+      <meta property="fb:app_id" content="{{ meta.app_id }}" />
+    {% endif %}
 
     <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
   {% endblock %}

@@ -1,1 +1,0 @@
-- [DevOps] Use MailJet Premium for autoresponding, not Zapier
