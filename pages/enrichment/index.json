@@ -6,7 +6,7 @@
   },
   "form": {
     "url": "https://hooks.zapier.com/hooks/catch/3154330/fib7bv/",
-    "confirmURL": "http://dev.onlinecommissioner.com/enrichment/thankyou.html",
+    "confirmURL": "enrichment/thankyou.html",
     "listID": "9789"
   }
 }
