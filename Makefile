@@ -13,6 +13,9 @@ DOMAIN := $(shell bin/domain $(CONTEXT))
 PUBLIC := $(PUBLIC)/$(DOMAIN)
 ASSETS := $(PUBLIC)/assets
 
+# Set full path for ignored pages
+IGNORE_PAGES := $(IGNORE_PAGES:%=public/$(DOMAIN)/%)
+
 # HTML Pages
 TPLS  := $(shell find templates -name '*.njk')
 TPLS  += $(shell find pages -name '*.njk' -path '*/templates/*')
@@ -26,11 +29,10 @@ EM_MJM := $(EM_TPL:emails/%.njk=emails/%.mjml)
 EM_HTM := $(EM_MJM:emails/%.mjml=$(PUBLIC)/emails/%.html)
 
 # CSS
-CSS_SRC := $(shell find pages -name 'index.scss')
-CSS_DST := $(CSS_SRC:pages/%.scss=$(PUBLIC)/assets/%.css)
-CSS_DST := $(filter-out $(IGNORE_PAGES),$(CSS_DST))
-CSS_DST += $(PUBLIC)/assets/css/bulma.min.css
-CSS_DEP := $(shell find pages -name '*.scss' ! -name 'index.scss')
+CSS_SRC := styles/index.scss
+CSS_DST := $(PUBLIC)/assets/css/index.css
+CSS_DEP := $(CSS_SRC)
+CSS_DEP += $(shell find pages -name '*.scss')
 CSS_DEP += $(shell find node_modules/bulma -name '*.scss' -o -name '*.sass')
 
 # Javascript
@@ -105,13 +107,9 @@ pages/%.json::
 $(PUBLIC)/favicon.ico: $(FAVICONS)
 	png2ico $@ $^
 
-$(PUBLIC)/assets/css/bulma.min.css: node_modules/bulma/css/bulma.min.css
+$(CSS_DST): $(CSS_DEP)
 	@mkdir -p $(@D)
-	cp $< $@
-
-$(PUBLIC)/assets/%.css: pages/%.scss $(CSS_DEP)
-	@mkdir -p $(@D)
-	sass --load-path=node_modules $< | postcss > $@
+	sass --load-path=node_modules $(CSS_SRC) | postcss > $@
 
 $(PUBLIC)/assets/js/%.js: scripts/%.js rollup.config.js
 	$(rollup)

@@ -1,0 +1,27 @@
+$family-sans-serif: "Roboto", BlinkMacSystemFont, -apple-system, "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+
+@import "bulma/bulma";
+
+.countdown {
+  margin-bottom: 1.5rem;
+}
+
+.has-space {
+  margin-bottom: 1.5rem;
+}
+
+.has-space-top {
+  margin-top: 1.5rem;
+}
+
+.has-space-top {
+  margin-top: 1.5rem;
+}
+
+.has-space-top.is-medium {
+  margin-top: 3rem;
+}
+
+.media.is-borderless {
+  border: 0 none;
+}

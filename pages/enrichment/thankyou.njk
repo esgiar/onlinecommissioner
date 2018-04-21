@@ -8,7 +8,13 @@
 {% from "../../templates/macros/action_button.njk" import actionButton %}
 
 {% block body %}
-  {{ header() }}
+  {{ header(
+      s('img/logo-online_commissioner_tran_wht-2x1.png'),
+      backgroundColor='info',
+      titleIcon='book',
+      titleText='eBook Giveaway'
+     )
+  }}
 
   <section class="hero is-info">
     <div class="hero-body">
@@ -49,7 +55,7 @@
       <p class="has-text-grey">This is for the tremendously ambitious entrepreneurs only. Please do not proceed to read the rest of this page unless you have the courage to place a six-figure, or even a seven-figure price tag on yourself from this day forward</p>
     </div>
 
-    {% call actionButton() %}
+    {% call actionButton(productURL) %}
       Yes! I Am Ready To Start Earning $10k+ A Month!
     {% endcall %}
 
@@ -125,7 +131,7 @@
       <h4 class="has-text-centered">Do You Want To Be Next?</h4>
     </div>
 
-    {% call actionButton() %}
+    {% call actionButton(productURL) %}
       Yes! I Am Ready To Get Started NOW!
     {% endcall %}
   {% endcall %}
@@ -246,7 +252,7 @@
       </div>
     </div>
 
-    {% call actionButton() %}
+    {% call actionButton(productURL) %}
       I Am Ready To Get Started Now
     {% endcall %}
   {% endcall %}
@@ -382,7 +388,7 @@
       <p>That's it, and better yet - I'll give you a special resource where you can get Done For You Traffic to your website.</p>
     </div>
 
-    {% call actionButton() %}
+    {% call actionButton(productURL) %}
       I Am Ready To Get Started Now
     {% endcall %}
   {% endcall %}
@@ -435,7 +441,7 @@
       <p>(Wired to your bank every 2 weeks).</p>
     {% endcall %}
 
-    {% call actionButton() %}
+    {% call actionButton(productURL) %}
       I Am Ready To Get Started Now
     {% endcall %}
   {% endcall %}
@@ -520,7 +526,7 @@
       <p>You see, there’s something special about this system. It allows ordinary people to follow a proven process that can’t get saturated, and earn real high ticket commissions. It allows newbies to start playing on a level playing field with the gurus. It gives honest people like us an opportunity to create a real income, working part time from home.</p>
     </div>
 
-    {% call actionButton() %}
+    {% call actionButton(productURL) %}
       I Am Ready To Get Started Now
     {% endcall %}
   {% endcall %}
@@ -582,7 +588,7 @@
       {% endcall %}
     </article>
 
-    {% call actionButton('info') %}
+    {% call actionButton(productURL, 'info') %}
       I Am Ready To Skyrocket My Income NOW!
     {% endcall %}
 

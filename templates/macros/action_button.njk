@@ -1,6 +1,6 @@
-{% macro actionButton(color='danger') %}
+{% macro actionButton(href, color='danger') %}
   <div class="has-text-centered">
-    <a class="button is-large is-{{ color }} is-rounded" href="{{ productURL }}">
+    <a class="button is-large is-{{ color }} is-rounded" href="{{ href }}">
       {{ caller() }}
     </a>
   </div>

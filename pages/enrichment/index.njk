@@ -1,10 +1,17 @@
 {% extends "./templates/base.njk" %}
+
 {% from "../../templates/macros/header.njk" import header %}
+{% from "../../templates/macros/section.njk" import section %}
+{% from "../../templates/macros/checklist.njk" import checkItem %}
 {% from "../../templates/macros/countdown.njk" import countdown %}
-{% from "../../templates/macros/action_button.njk" import actionButton %}
 
 {% block body %}
-  {{ header('dark', offset=8) }}
+  {{ header(
+      s('img/logo-online_commissioner_tran_wht-2x1.png'),
+      titleIcon='book',
+      titleText='eBook Giveaway'
+     )
+  }}
 
   <section class="hero is-dark">
     <div class="hero-body">
@@ -18,7 +25,7 @@
           <div class="column is-4 has-text-centered">
             <h1 class="title has-space-top is-medium">Free Download Expires In</h1>
             {{ countdown('2018-04-30') }}
-            <button class="button is-success is-size-4 has-text-weight-bold has-space-top open-modal" data-modal="enrichment-form">
+            <button class="button is-success is-size-4 has-text-weight-bold open-modal" data-modal="enrichment-form">
               Download Now For Free!
             </button>
           </div>
@@ -27,60 +34,60 @@
     </div>
   </section>
 
-  <section class="section">
-    <div class="container">
-      <div class="columns is-centered">
-        <div class="column is-7">
-          <h1 class="title has-text-centered is-size-1 has-text-danger">
-            Free enRICHment E-Book
-          </h1>
-          <div class="content is-medium">
-            <p>How I enrich myself after making the transition from a traditional entrepreneur to an online entrepreneur.</p>
+  {% call section() %}
+    <h1 class="title has-text-centered is-size-1 has-text-dark">
+      Free EN<span class="has-text-danger">RICH</span>MENT eBook
+    </h1>
 
-            <p>In this book, you will discover how I began the journey using the internet and now help others to also achieve their goals.</p>
+    <div class="content is-medium">
+      <p>How I enrich myself after making the transition from a traditional entrepreneur to an online entrepreneur.</p>
 
-            <h2>In your free book, you will discover...</h2>
+      <p>In this book, you will discover how I began the journey using the internet and now help others to also achieve their goals.</p>
+    </div>
 
-            <ul>
-              <li>The steps you must take to create financial security in our current new economy where most people are struggling to get paid for what they are worth</li>
-              <li>Discover how you can stop wasting resources and start getting results</li>
-              <li>And much more...</li>
-            </ul>
+    <h2 class="title is-4">
+      In your free book, you will discover...
+    </h2>
 
-          </div>
+    {% call checkItem() %}
+      The steps you must take to create financial security in our current new economy where most people are struggling to get paid for what they are worth
+    {% endcall %}
+
+    {% call checkItem() %}
+      Discover how you can stop wasting resources and start getting results
+    {% endcall %}
+
+    {% call checkItem() %}
+      And much more...
+    {% endcall %}
+  {% endcall %}
+
+  {% call section('light') %}
+    <div class="columns">
+      <div class="column is-7">
+        <div class="content is-medium">
+          <p>I want to help people all around the world to develop their vision and a plan of action for building and living their dream lifestyle.</p>
+
+          <p>Not only that, I’ll be travelling all over the world teaching and training entrepreneurs how they can grow their businesses and increase their wealth for themselves and their families.</p>
+
+          <p>This free book "Enrichment" will explain why entrepreneurship could possibly be the right decision for you, what and how you can do to get started with your entrepreneurial journey today.</p>
+
+          <p>My mission now is to share the true experience and knowledge with as many people as possible in the sincere hope this information will do for others what it did for me.</p>
+
+          <p>So, open your mind... your journey begins NOW!</p>
         </div>
       </div>
-    </div>
-  </section>
+      <div class="column is-5 has-text-centered">
+        <figure class="image is-4by3 has-space has-space-top is-medium">
+          <img src="{{ s('img/person-bakar_rahman_01-4x3.jpg') }}">
+        </figure>
 
-  <div class="section has-background-light">
-    <div class="container">
-      <div class="columns is-centered">
-        <div class="column is-4">
-          <div class="content is-medium">
-            <p>I want to help people all around the world to develop their vision and a plan of action for building and living their dream lifestyle.</p>
-
-            <p>Not only that, I’ll be travelling all over the world teaching and training entrepreneurs how they can grow their businesses and increase their wealth for themselves and their families.</p>
-
-            <p>This free book "Enrichment" will explain why entrepreneurship could possibly be the right decision for you, what and how you can do to get started with your entrepreneurial journey today.</p>
-
-            <p>My mission now is to share the true experience and knowledge with as many people as possible in the sincere hope this information will do for others what it did for me.</p>
-
-            <p>So, open your mind... your journey begins NOW!</p>
-          </div>
-        </div>
-        <div class="column is-3 has-text-centered">
-          <figure class="image is-4by3 has-space has-space-top is-medium">
-            <img src="{{ s('img/person-bakar_rahman_01-4x3.jpg') }}">
-          </figure>
-
-          <button class="button is-primary is-size-4 has-text-weight-bold open-modal" data-modal="enrichment-form">
-            I Want The E-book Now!
-          </button>
-        </div>
+        <button class="button is-primary is-size-4 has-text-weight-bold open-modal" data-modal="enrichment-form">
+          I Want The eBook Now!
+        </button>
       </div>
     </div>
-  </div>
+  {% endcall %}
 
   {% include "../../templates/footer.njk" %}
 
@@ -88,7 +95,7 @@
     <div class="modal-background"></div>
     <div class="modal-content">
       <div class="box">
-        <h1 class="title">Yes, I want the e-book!</h1>
+        <h1 class="title">Yes, I want the eBook!</h1>
         <h2 class="subtitle">
           Please enter your details correctly to claim your special access.
         </h2>

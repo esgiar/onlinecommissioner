@@ -1,11 +1,43 @@
-{% macro header(bg='info', size=2, offset=false) %}
-  <header class="section is-paddingless has-background-{{ bg }}">
+{% macro header(
+    logo,
+    logoSize='2x1',
+    logoWidth='160px',
+    textColor='light',
+    backgroundColor='dark',
+    titleIcon='',
+    titleText='',
+    columnSize=7
+) %}
+  <header class="section has-background-{{ backgroundColor }} has-text-{{ textColor }}">
     <div class="container">
       <div class="columns is-centered">
-        <div class="column is-{{ size }}{{ ' is-offset-'+offset if offset else '' }}">
-          <figure class="image is-2by1 has-space-top">
-            <img src="../assets/img/logo-online_commissioner-2x1.png">
-          </figure>
+        <div class="column is-{{ columnSize }}">
+          <div class="level">
+            <div class="level-left">
+              <div class="level-item">
+                {% if titleIcon %}
+                  <span class="icon is-medium">
+                    <i class="fas fa-{{ titleIcon }} fa-lg"></i>
+                  </span>
+                {% endif %}
+                {% if titleText %}
+                  <h1 class="title is-4 has-text-{{ textColor }}">
+                    {{ titleText }}
+                  </h1>
+                {% endif %}
+                {% if not titleIcon and not titleText %}
+                  &nbsp;
+                {% endif %}
+              </div>
+            </div>
+            <div class="level-right">
+              <div class="level-item">
+                <figure class="image is-{{ logoSize }}" style="width:{{ logoWidth }}">
+                  <img src="{{ logo }}">
+                </figure>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
