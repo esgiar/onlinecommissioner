@@ -27,6 +27,6 @@ export default {
       include: 'node_modules/autotrack/**',
       externalHelpers: true
     }),
-    env === 'production' && require('rollup-plugin-uglify')()
+    env !== 'development' && require('rollup-plugin-uglify')()
   ]
 }

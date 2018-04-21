@@ -9,7 +9,8 @@ include config.mk
 CONTEXT := site.json site.$(NODE_ENV).json
 
 # Build to public/<domain>
-PUBLIC := $(PUBLIC)/$(shell bin/domain $(CONTEXT))
+DOMAIN := $(shell bin/domain $(CONTEXT))
+PUBLIC := $(PUBLIC)/$(DOMAIN)
 ASSETS := $(PUBLIC)/assets
 
 # HTML Pages
@@ -44,6 +45,8 @@ STAT_DST := $(STAT_DST:pages/%=$(PUBLIC)/%)
 STAT_DST := $(filter-out $(IGNORE_PAGES),$(STAT_DST))
 FAVICONS := $(shell find static/assets/img -name 'favicon-*.png')
 FAVICONS := $(sort $(FAVICONS))
+
+export NODE_ENV REMOTE_USER REMOTE_HOST REMOTE_PORT
 
 define postcss =
 	@mkdir -p $(@D)
@@ -126,7 +129,15 @@ $(PUBLIC)/%: static/%
 server:
 	http-server $(PUBLIC) -p 80
 
+server-ssl: deploy/$(DOMAIN).crt deploy/$(DOMAIN).key
+	http-server $(PUBLIC) -p 443 --ssl \
+	  --cert deploy/$(DOMAIN).crt \
+	  --key deploy/$(DOMAIN).key
+
+deploy:
+	bin/deploy
+
 print-%:
 	@echo $* = $($*)
 
-.PHONY: static
+.PHONY: static deploy

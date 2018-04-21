@@ -1,3 +1,2 @@
 - [Funnel] complete "enrichment ebook" funnel
-- [DevOps] complete bin/deploy script
-- [DevOps] deploy
+- [DevOps] deploy: production
