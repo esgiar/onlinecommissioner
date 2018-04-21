@@ -23,7 +23,9 @@ export default {
     }),
     require('rollup-plugin-commonjs')(),
     require('rollup-plugin-babel')({
-      exclude: 'node_modules/**'
+      exclude: 'node_modules/**',
+      include: 'node_modules/autotrack/**',
+      externalHelpers: true
     }),
     env === 'production' && require('rollup-plugin-uglify')()
   ]

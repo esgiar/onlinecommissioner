@@ -110,7 +110,7 @@ $(PUBLIC)/assets/%.css: pages/%.scss $(CSS_DEP)
 	@mkdir -p $(@D)
 	sass --load-path=node_modules $< | postcss > $@
 
-$(PUBLIC)/assets/js/%.js: scripts/%.js
+$(PUBLIC)/assets/js/%.js: scripts/%.js rollup.config.js
 	$(rollup)
 
 $(PUBLIC)/%.jpg: static/%.jpg

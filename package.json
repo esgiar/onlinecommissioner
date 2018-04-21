@@ -21,7 +21,7 @@
     "babel-core": "^6.26.0",
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
-    "babel-preset-latest": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
     "html-minifier": "^3.5.14",
     "http-server": "^0.11.1",
     "imagemin-cli": "^3.0.0",
@@ -38,6 +38,7 @@
     "sass": "^1.2.0"
   },
   "dependencies": {
+    "autotrack": "^2.4.1",
     "bulma": "^0.7.0",
     "lodash": "^4.17.5",
     "moment": "^2.22.1",

@@ -1,3 +1,3 @@
-- [Design] add event tracking
 - [Funnel] complete "enrichment ebook" funnel
+- [DevOps] complete bin/deploy script
 - [DevOps] deploy
