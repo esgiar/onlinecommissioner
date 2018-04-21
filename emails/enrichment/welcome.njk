@@ -16,7 +16,7 @@
       <mj-column>
         <mj-image width="100" src="{{ s('img/logo-online_commissioner_tran_blk-2x1.png') }}"/>
         <mj-text mj-class="sub-heading" padding-bottom="0">
-          {{ '{{data:name:"Hello there"}}' }}
+          {{ '{{data:name:"Hello there"}}'|safe }}
         </mj-text>
         <mj-text mj-class="heading" padding-top="0">
           Your Enrichment eBook is ready!
@@ -91,6 +91,19 @@
         </mj-text>
 
         <mj-image width="336" src="{{ s('img/person-bakar_rahman_01-4x3.jpg') }}" />
+      </mj-column>
+    </mj-section>
+
+    <mj-section background-color="#eee">
+      <mj-column>
+        <mj-text align="center" font-size="12px" color="#444">
+          <p>
+            You are currently signed up to receive this type of emails from {{ meta.site }}.
+            <br>
+            To unsubscribe, <a href="{{ '{{mj:unsub_link_en}}'|safe }}">click here</a>: [[WORKFLOW_EXIT_UNSUB_LINK_EN]]
+          </p>
+          <p>Copyright &copy; 2018 {{ meta.site }}. All rights reserved.</p>
+        </mj-text>
       </mj-column>
     </mj-section>
   </mj-container>
