@@ -1,0 +1,15 @@
+mixin countdown(end)
+  .countdown(data-enddate=end)
+    .columns.is-centered
+      .column.is-narrow.countdown-component.of-days
+        code.box.is-size-3.has-text-weight-bold.is-marginless &nbsp;&nbsp;
+        span.is-size-6 days
+      .column.is-narrow.countdown-component.of-hours
+        code.box.is-size-3.has-text-weight-bold.is-marginless &nbsp;&nbsp;
+        span.is-size-6 hours
+      .column.is-narrow.countdown-component.of-minutes
+        code.box.is-size-3.has-text-weight-bold.is-marginless &nbsp;&nbsp;
+        span.is-size-6 minutes
+      .column.is-narrow.countdown-component.of-seconds
+        code.box.is-size-3.has-text-weight-bold.is-marginless &nbsp;&nbsp;
+        span.is-size-6 seconds

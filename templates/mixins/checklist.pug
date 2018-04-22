@@ -1,0 +1,19 @@
+mixin cl(...items)
+  - CheckListIcon = attributes.icon || 'check'
+  - CheckListColor = attributes['icon-color'] || 'success'
+  div
+    if items && items.length
+      each item in items
+        +ci= item
+    else
+      block
+
+mixin ci
+  - var iconColor = CheckListColor || 'success'
+  - var icon = CheckListIcon || 'check';
+  .media.is-borderless
+    .media-left
+      span(class=`icon is-medium has-text-${iconColor}`)
+        i(class=`fas fa-2x fa-${icon}`)
+    .media-content.is-size-5
+      block

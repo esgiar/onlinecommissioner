@@ -1,0 +1,19 @@
+#!/usr/bin/env node
+
+const pug = require('pug')
+const nunjucks = require('nunjucks')
+const render = require('./shared').render
+
+const renderers = {
+  nunjucks: function (tpl, context, callback) {
+    callback(null, nunjucks.renderString(tpl, context))
+  },
+
+  pug: function (tpl, context, callback) {
+    callback(null, pug.render(tpl, context))
+  }
+}
+
+if (require.main === module) {
+  render(renderers)
+}

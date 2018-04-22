@@ -1,0 +1,49 @@
+mixin cols
+  - var s = (attributes.is||'').split(/\s+/).map((a) => `is-${a}`).join(' ')
+  div(class=`columns ${s} ${attributes.class}`)
+    block
+
+mixin col
+  - var s = (attributes.is||'').split(/\s+/).map((a) => `is-${a}`).join(' ')
+  div(class=`column ${s} ${attributes.class}`)
+    block
+
+mixin col2
+  +col(is=`2 ${attributes.is}`)
+    block
+
+mixin col3
+  +col(is=`3 ${attributes.is}`)
+    block
+
+mixin col4
+  +col(is=`4 ${attributes.is}`)
+    block
+
+mixin col5
+  +col(is=`5 ${attributes.is}`)
+    block
+
+mixin col6
+  +col(is=`6 ${attributes.is}`)
+    block
+
+mixin col7
+  +col(is=`7 ${attributes.is}`)
+    block
+
+mixin col8
+  +col(is=`8 ${attributes.is}`)
+    block
+
+mixin col9
+  +col(is=`9 ${attributes.is}`)
+    block
+
+mixin col10
+  +col(is=`10 ${attributes.is}`)
+    block
+
+mixin col11
+  +col(is=`11 ${attributes.is}`)
+    block

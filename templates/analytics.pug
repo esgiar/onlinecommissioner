@@ -1,0 +1,8 @@
+if gaPropertyID
+  // Google Analytics
+  script.
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+    ga('create', '#{gaPropertyID}', 'auto')
+  script(async src='https://www.google-analytics.com/analytics.js')
+  script(async src=s('js/analytics.js'))
+  // End Google Analytics

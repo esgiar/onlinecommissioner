@@ -17,16 +17,21 @@ ASSETS := $(PUBLIC)/assets
 IGNORE_PAGES := $(IGNORE_PAGES:%=public/$(DOMAIN)/%)
 
 # HTML Pages
-TPLS  := $(shell find templates -name '*.njk')
-TPLS  += $(shell find pages -name '*.njk' -path '*/templates/*')
-PAGES := $(shell find pages -name '*.njk' -not -path '*/templates/*')
-PAGES := $(PAGES:pages/%.njk=$(PUBLIC)/%.html)
-PAGES := $(filter-out $(IGNORE_PAGES),$(PAGES))
+EXTS    := njk pug
+FI_OPTS := $(foreach n,$(EXTS),-o -name '*.$(n)')
+FI_OPTS := $(wordlist 2,$(words $(FI_OPTS)),$(FI_OPTS))
+TPL_DEP := $(shell find templates $(FI_OPTS))
+TPL_DEP += $(shell find pages -name '*.tpl' -path '*/templates/*')
+TPL_DEP += html-minifier.json
+PAGES   := $(shell find pages -name '*.tpl' -not -path '*/templates/*')
+PAGES   := $(PAGES:pages/%.tpl=$(PUBLIC)/%.html)
+PAGES   := $(filter-out $(IGNORE_PAGES),$(PAGES))
 
 # Emails templates
-EM_TPL := $(shell find emails -name '*.njk')
-EM_MJM := $(EM_TPL:emails/%.njk=emails/%.mjml)
-EM_HTM := $(EM_MJM:emails/%.mjml=$(PUBLIC)/emails/%.html)
+MJML   := emails/mjml/$(DOMAIN)
+EM_TPL := $(shell find emails -name '*.tpl')
+EM_MJM := $(EM_TPL:emails/%.tpl=$(MJML)/%.mjml)
+EM_HTM := $(EM_MJM:$(MJML)/%.mjml=$(PUBLIC)/emails/%.html)
 
 # CSS
 CSS_SRC := styles/index.scss
@@ -83,26 +88,19 @@ js-libs: $(JS_LIB)
 
 static: $(STAT_DST) $(PUBLIC)/favicon.ico
 
-$(PUBLIC)/emails/%.html: emails/%.mjml
+$(PUBLIC)/emails/%.html: $(MJML)/%.mjml
 	@mkdir -p $(@D)
 	mjml $< -o $@
 
-emails/%.mjml: emails/%.njk emails/%.json $(CONTEXT) $(TPLS)
-	njs $< $(CONTEXT) emails/$(*D)/index.json emails/$*.json \
-	  | html-beautify -m 1 -s 2 -f - \
-	  > $@
-
-emails/%.json::
-	@touch $@
-
-$(PUBLIC)/%.html: pages/%.json pages/%.njk html-minifier.json $(CONTEXT) $(TPLS)
+$(MJML)/%.mjml: emails/%.tpl $(CONTEXT) emails/%.json emails/%.yaml $(TPL_DEP)
 	@mkdir -p $(@D)
-	njs pages/$*.njk $(CONTEXT) pages/$*.json \
-	  | html-minifier --config-file html-minifier.json \
-	  > $@
+	render $< $(CONTEXT) emails/$*.json emails/$*.yaml \
+	  | html-beautify -m 1 -s 2 -f - > $@
 
-pages/%.json::
-	@touch $@
+$(PUBLIC)/%.html: pages/%.tpl $(CONTEXT) pages/%.json pages/%.yaml $(TPL_DEP)
+	@mkdir -p $(@D)
+	render $< $(CONTEXT) pages/$*.json pages/$*.yaml \
+	  | html-minifier -c html-minifier.json > $@
 
 $(PUBLIC)/favicon.ico: $(FAVICONS)
 	png2ico $@ $^
@@ -123,6 +121,12 @@ $(PUBLIC)/%.png: static/%.png
 $(PUBLIC)/%: static/%
 	@mkdir -p $(@D)
 	cp $< $@
+
+%.json::
+	@touch $@
+
+%.yaml::
+	@touch $@
 
 server:
 	http-server $(PUBLIC) -p 80

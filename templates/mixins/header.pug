@@ -1,0 +1,27 @@
+mixin header()
+  - var logo = s(attributes.logo);
+  - var logoSize = attributes['logo-size'] || '2x1';
+  - var logoWidth = attributes['logo-width'] || '160px';
+  - var textColor = attributes['text-color'] || 'light';
+  - var backColor = attributes['background-color'] || 'dark';
+  - var columnSize = attributes.size || 7;
+  - var titleIcon = attributes.icon;
+  - var titleText = attributes.title;
+  header(class=`section has-text-${textColor} has-background-${backColor}`)
+    .container
+      .columns.is-centered
+        div(class=`column is-${columnSize}`)
+          .level
+            .level-left
+              .level-item
+                if titleIcon
+                  span.icon.is-medium
+                    i(class=`fas fa-lg fa-${titleIcon}`)
+                if titleText
+                  h1(class=`title is-4 has-text-${textColor}`)= titleText
+                if !titleIcon && !titleText
+                  | &nbsp;
+            .level-right
+              .level-item
+                figure(class=`image is-${logoSize}` style=`width:${logoWidth}`)
+                  img(src=logo)

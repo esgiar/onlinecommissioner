@@ -1,0 +1,33 @@
+mixin se
+  section(class=[
+    'section',
+    attributes['text-color'] && `has-text-${attributes['text-color']}`,
+    attributes['background-color'] && `has-background-${attributes['background-color']}`,
+  ])
+    .container
+      .columns.is-centered
+        div(class=`column is-${attributes.size || 7}`)
+          block
+
+mixin tt
+  h1(class=[
+    'title',
+    'has-text-centered',
+    attributes['text-color'] && `has-text-${attributes['text-color']}`,
+    attributes.spaced && 'is-spaced',
+    attributes.size && `is-${attributes.size}`
+  ])
+    block
+
+mixin st
+  h2(class=[
+    'subtitle',
+    'has-text-centered',
+    attributes['text-color'] && `has-text-${attributes['text-color']}`,
+    attributes['size'] && `is-${attributes.size}`
+  ])
+    block
+
+mixin co
+  article.content.is-medium
+    block
