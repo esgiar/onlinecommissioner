@@ -41,11 +41,11 @@ block body
   section.hero.is-dark
     .hero-body
       .container
-        .columns.is-centered
-          .column.is-3
+        +cols('centered')
+          +col(3)
             figure.image.is-3by4
               img(src=s('img/product-enrichment_ebook-3x4.jpg'))
-          .column.is-4.has-text-centered
+          +col(4).has-text-centered
             br
             br
             h1.title.is-medium
@@ -73,15 +73,15 @@ block body
         | And much more...
 
   +se(background-color='light')
-    +cols(is='centered')
-      +col7
+    +cols('centered')
+      +col(7)
         +co
           p I want to help people all around the world to develop their vision and a plan of action for building and living their dream lifestyle.
           p Not only that, I’ll be travelling all over the world teaching and training entrepreneurs how they can grow their businesses and increase their wealth for themselves and their families.
           p This free book "Enrichment" will explain why entrepreneurship could possibly be the right decision for you, what and how you can do to get started with your entrepreneurial journey today.
           p My mission now is to share the true experience and knowledge with as many people as possible in the sincere hope this information will do for others what it did for me.
           p So, open your mind... your journey begins NOW!
-      +col5.has-text-centered
+      +col(5).has-text-centered
         br
         +img(src=s('img/person-bakar_rahman_01-4x3.jpg') size='4by3')
         br

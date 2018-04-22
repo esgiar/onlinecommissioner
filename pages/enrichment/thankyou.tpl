@@ -35,8 +35,8 @@ block body
   section.hero.is-info
     .hero-body
       .container
-        .columns.is-centered
-          .column.is-7
+        +cols('centered')
+          +col(7)
             +tt(size=1) Thank You
             +st(size=3) For downloading my e-book
             .message.is-warning
@@ -64,34 +64,34 @@ block body
       em The Desk Of Bakar Rahman The Online Commissioner
     +st(size=4)
       | Date: April 2018
-    +cols(is='multiline')
-      +col6
+    +cols('multiline')
+      +col(6)
         +img(size='4by3' src=s('img/person-bakar_rahman_01-4x3.jpg'))
-      +col6
+      +col(6)
         +co
           p If you’re sick and tired of chasing the “next best” thing, and if you’re ready to create real results, real wealth, and real freedom, then close the door and read every word of this page now.
           p By the time you reach the end of this letter; you'll not only understand my system, but how you can virtually download it for free and use it to become one of my biggest success stories I'm creating by December 31st, 2020.
-      +col6
+      +col(6)
         +co
           p.has-text-weight-bold Don't believe me?
           p I'm not asking you to. If you're smart enough, you'll stick around and watch the irrefutable income proof below, and discover how you can activate it to start earning passive, consistent income online... Deal ?
           p.has-text-weight-bold Let's get started.
           p Before I share my secret, I want to be clear that ‘Easy Money’ and ‘Get Rich Quick’ do not exist. Most of the people who get ‘creamed’ in this business have a lottery based mentality, and suffer from the trappings of entitlement.
-      +col6
+      +col(6)
         +img(size='4by3' src=s('img/person-bakar_rahman_02-4x3.jpg'))
-      +col6
+      +col(6)
         +img(size='4by3' src=s('img/person-bakar_rahman_03-4x3.jpg'))
-      +col6
+      +col(6)
         +co
           p With that being said, I'm going to show you how to create REAL WEALTH using this system. This system I've shared with people to over 100+ countries...
           p A real education based platform that offers a lucrative business opportunity "Online Franchise" like system...
           p And... while most of the work is done for you, every smart entrepreneur knows that success in any business requires time, money and persistence.
-      +col6
+      +col(6)
         +co
           p After all this success, I'm now on a mission to give back and create new success stories. And, I now have a powerful secret formula.
           p In fact I have set a goal to create 100 new online millionaires using this proven time tested 'insider' system. This isn't for everybody. Only those who are ready to play full out.
           p.has-text-weight-bold Are you game?
-      +col6
+      +col(6)
         +img(size='4by3' src=s('img/ppl-mobe_event_hk_01-4x3.jpg'))
 
   +se
@@ -115,9 +115,9 @@ block body
       p Luckily for me I submitted my application and got accepted, and what I discovered blew my mind. No matter whether you are a complete newbie who has never made a dime online, or a seasoned vet - If you are accepted, you can use this system to bank big money, and it's backed by a very strong 100% GUARANTEE.
       p Without ever needing to do anything complex:
     +cols
-      +col5
+      +col(5)
         +cl(...content.tech_skills)(icon='times' icon-color='danger')
-      +col7
+      +col(7)
         +img(src=s('img/ss_fb-deborah-5x3.jpg') size='5by3')
         br
         +img(src=s('img/ss_fb-adeline-2x1.png') size='2by1')
@@ -130,9 +130,9 @@ block body
       p New marketers with little or no experience in this industry were finally seeing results. People who had NEVER achieved success in this industry, are now making money. Many in their first or second month!
       h4.has-text-centered You Don't Have To Struggle (Unless You Want to!)
     +cols
-      +col6
+      +col(6)
         +cl(...content.community)
-      +col6
+      +col(6)
         +img(src=s('img/ppl-mobe_event_20160619_01-3x2.jpg') size='3by2')
         br
         +img(src=s('img/ppl-mobe_event_20160619_02-3x2.jpg') size='3by2')
@@ -203,39 +203,39 @@ block body
       p Once you join, you will be given full step by step training on how to implement everything. You'll have your own personal business success coach who will work you through all the steps.
       p It's as simple as 5 easy steps:
     +cols
-      +col5
+      +col(5)
         +img(src=s('img/product-wifi_millionaire_02-16x9.png') size='16by9')
-      +col7
+      +col(7)
         +co
           h4 STEP 1 - GET YOUR OWN INTERNET MARKETING SYSTEM IN A BOX STARTER KIT...
           p Join our private invite only high converting affiliate program, and 21 step Wifi training system.
           p It's By APPLICATION ONLY. You can do that by #[+productLink clicking here]
     +cols
-      +col5
+      +col(5)
         +img(src=s('img/ss_product-wifi_millionaire-16x9.jpg') size='16by9')
-      +col7
+      +col(7)
         +co
           h4 STEP 2 - ONCE YOU'VE COMPLETED ALL STEPS, NOW START PROMOTING TO PROFITS.
           p Select from our ever expanding library of pre built high converting lead capture systems, or ready made sales funnels to promote.
           p Simply follow the easy step-by-step instructions to start getting traffic, leads and sales to your business.
     +cols
-      +col5
+      +col(5)
         +img(src=s('img/clip-leads_prospects_customers-1x1.png') size='16by9')
-      +col7
+      +col(7)
         +co
           h4 STEP 3 - PROSPECTS TO CUSTOMERS.
           p Follow our step by step traffic training videos, and drive leads into the system. This automatically turns strangers and website visitors into red hot repeat customers and sales.
     +cols
-      +col5
+      +col(5)
         +img(src=s('img/clip-call_center_01-3x2.jpg') size='16by9')
-      +col7
+      +col(7)
         +co
           h4 STEP 4 - AUTOMATING SYSTEMS TO MAKE SALES.
           p Our custom email campaigns will immediately start communicating with your leads. Our fully trained, professional telesales team will call up your leads, and build a relationship, deliver value, then sell them our high ticket programs.
     +cols
-      +col5
+      +col(5)
         +img(src=s('img/clip-phone_team_01-5x3.jpg') size='16by9')
-      +col7
+      +col(7)
         +co
           h4 STEP 5 - START MAKING COMMISSIONS...
           p Every time we make a sale for you, you earn a massive 50% commission! Earn automated commissions of $1,250, $3,300, $5,500 and $10,000 per sale!
@@ -247,40 +247,40 @@ block body
       span Here's everything you will be getting
       br
       span.has-text-danger when you get started today
-    +cols(is='multiline')
-      +col5
+    +cols('multiline')
+      +col(5)
         +img(src=s('img/product-wifi_millionaire_02-16x9.png') size='16x9')
-      +col7
+      +col(7)
         +co
           h4 DONE FOR YOU DIRECT SALES SYSTEM
           p Instant access to the WiFi done for you direct sales system that deposits $1,200, $3,300, and $5,500 into your bank account (complete with 21 step lead generation &amp; training program).
-      +col5
+      +col(5)
         +img(src=s('img/clip-phone_support_01-3x2.jpg') size='3x2')
-      +col7
+      +col(7)
         +co
           h4 DONE FOR YOU FULFILMENT, PAYMENTS AND CUSTOMER SERVICE
           p You'll get done for you product fulfilment, payment solutions and customer service so you can focus on the easy part, placing ads with our steps and getting leads.
-      +col5
+      +col(5)
         +img(src=s('img/clip-phone_support_02-3x2.jpg') size='3x2')
-      +col7
+      +col(7)
         +co
           h4 PERSONAL BUSINESS SUCCESS COACH
           p Get access to a coach who will guide you through your journey so you will have someone by your side whenever you get stuck.
-      +col5
+      +col(5)
         +img(src=s('img/clip-leads_prospects_customers-1x1.png'))
-      +col7
+      +col(7)
         +co
           h4 HIGH CONVERTING SALES FUNNELS
           p You'll have insider access to the MOST effective sales funnels and high ticket products online. These products are and funnels are private, and for members only.
-      +col5
+      +col(5)
         +img(src=s('img/clip-traffic_plan-1x1.png'))
-      +col7
+      +col(7)
         +co
           h4 30 DAY TRAFFIC PLAN
           p Access to the most cutting edge strategies to generate traffic online, including YouTube, Facebook and Google advertising plans to get the most leads, for the cheapest price.
-      +col5
+      +col(5)
         +img(src=s('img/clip-wwn-4x3.jpg') size='4x3')
-      +col7
+      +col(7)
         +co
           h4 DAILY VIDEOS, WEBINARS &amp; TRAINING FROM TOP EARNERS
           p You'll get motivational and tactical training &amp; strategies that are working right NOW from the Top Earning Experts in marketing.
@@ -290,8 +290,8 @@ block body
       | ...Plus Special Bonus (Worth $297)!
     +st(size=3)
       | FREE training to kickstart the journey of unleashing your potential of becoming an internet rockstar.
-    +cols(is='centered')
-      +col8
+    +cols('centered')
+      +col(8)
         +img(src=s('img/product-internet_rockstar-4x3.png') size='4by3')
     +cl(...content.rockstar)
     +co
