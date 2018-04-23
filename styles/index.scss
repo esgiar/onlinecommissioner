@@ -1,25 +1,15 @@
+$family-serif: "PT Serif", serif;
 $family-sans-serif: "Roboto", BlinkMacSystemFont, -apple-system, "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 
 @import "bulma/bulma";
+@import "./aspectratio";
 
 .countdown {
   margin-bottom: 1.5rem;
 }
 
-.has-space {
-  margin-bottom: 1.5rem;
-}
-
-.has-space-top {
-  margin-top: 1.5rem;
-}
-
-.has-space-top {
-  margin-top: 1.5rem;
-}
-
-.has-space-top.is-medium {
-  margin-top: 3rem;
+.has-text-serif {
+  font-family: $family-serif;
 }
 
 .media.is-borderless {

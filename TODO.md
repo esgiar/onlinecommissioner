@@ -1,3 +1,3 @@
-- [design] finish imf-brisbane-goldcoast page
-- [email]  design imf welcome email
-- [devops] add task to store imf contacts in google sheets
+- [autom] zapier: automatically add cutom fields in MJ subscribe zap
+- [autom] zapier: add task to store imf contacts in google sheets
+- [email] design imf welcome email

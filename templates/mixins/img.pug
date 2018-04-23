@@ -1,3 +1,5 @@
 mixin img()
-  figure(class=`image is-${attributes.size||'1x1'}`)
+  figure(class=`image is-${attributes.size||'1x1'}`)&attributes(
+    _.omit(attributes, 'size', 'src')
+  )
     img(src=attributes.src)

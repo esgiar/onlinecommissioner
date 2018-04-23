@@ -3,12 +3,21 @@ const Path = require('path')
 const _ = require('lodash')
 const yaml = require('js-yaml')
 const matter = require('gray-matter')
+const moment = require('moment')
 
 const SEP = /\\+/g
 const DEFAULT_LANG = 'nunjucks'
 
 function loadYAML (file) {
-  const yml = _.trim(Fs.readFileSync(file))
+  let yml
+
+  try {
+    yml = _.trim(Fs.readFileSync(file))
+  } catch (e) {
+    if (e.code === 'ENOENT') {
+      return null
+    }
+  }
 
   if (yml) {
     return yaml.safeLoad(yml, {
@@ -67,6 +76,8 @@ function prepareContext (options) {
   c.env = process.env.NODE_ENV || 'development'
   c.uri = (path) => joinURI(c.baseURL, path)
   c.s = (path) => joinURI(c.staticURL, path)
+  c._ = _
+  c.moment = moment
 
   return c
 }

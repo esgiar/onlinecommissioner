@@ -6,5 +6,7 @@
   "logo": "img/logo-online_commissioner-2x1.png",
   "email": "bakar.rahman@onlinecommissioner.com",
   "author": "Bakar Rahman",
-  "affiliateID": "2154964"
+  "affiliateID": "2154964",
+  "fb": "https://fb.me/my.online.commissioner",
+  "geoipiScriptURL": "https://onlinecommissioner.com/geoip.php"
 }

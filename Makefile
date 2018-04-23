@@ -95,11 +95,13 @@ $(PUBLIC)/emails/%.html: $(MJML)/%.mjml
 $(MJML)/%.mjml: emails/%.tpl $(CONTEXT) emails/%.json emails/%.yaml $(TPL_DEP)
 	@mkdir -p $(@D)
 	render $< $(CONTEXT) emails/$*.json emails/$*.yaml \
+	  emails/$(*D)/index.json emails/$(*D).yaml \
 	  | html-beautify -m 1 -s 2 -f - > $@
 
 $(PUBLIC)/%.html: pages/%.tpl $(CONTEXT) pages/%.json pages/%.yaml $(TPL_DEP)
 	@mkdir -p $(@D)
 	render $< $(CONTEXT) pages/$*.json pages/$*.yaml \
+	  pages/$(*D)/index.json pages/$(*D)/index.yaml \
 	  | html-minifier -c html-minifier.json > $@
 
 $(PUBLIC)/favicon.ico: $(FAVICONS)

@@ -1,3 +1,12 @@
+mixin hero
+  section(class=[
+    'hero',
+    attributes['background-color'] && `is-${attributes['background-color']}`
+  ])&attributes(_.omit(attributes, 'background-color'))
+    .hero-body
+      .container
+        block
+
 mixin se
   section(class=[
     'section',
@@ -16,7 +25,7 @@ mixin tt
     attributes['text-color'] && `has-text-${attributes['text-color']}`,
     attributes.spaced && 'is-spaced',
     attributes.size && `is-${attributes.size}`
-  ])
+  ])&attributes(_.omit(attributes, 'text-color', 'spaced', 'size'))
     block
 
 mixin st
@@ -25,9 +34,9 @@ mixin st
     'has-text-centered',
     attributes['text-color'] && `has-text-${attributes['text-color']}`,
     attributes['size'] && `is-${attributes.size}`
-  ])
+  ])&attributes(_.omit(attributes, 'size', 'text-color'))
     block
 
 mixin co
-  article.content.is-medium
+  article.content.is-medium&attributes(attributes)
     block
