@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+set -eu
+
+name=$1
+title=${2-$name}
+lang=${3-pug}
+file=pages/$name/index.tpl
+
+mkdir -p $(dirname $file)
+
+cat <<EOT >> $file
+---
+# vim: set ft=$lang:
+lang: $lang
+meta:
+ title: $title
+---
+EOT
