@@ -1,6 +1,6 @@
-node_modules
-public
-deploy
+node_modules/
+public/
+deploy/
 locals.mk
 site.*.json
 *.mjml

@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+set -eu
+
+NODE_ENV=${NODE_ENV:-staging}
+
+domain=$(bin/domain site.json site.${NODE_ENV}.json)
+site_dir=public/${domain}
+depl_dir=deploy
+cur_date=$(date '+%Y-%m-%d.%H%M%S')
+tar_name=${domain}-${cur_date}.tar.gz
+tar_file=${depl_dir}/${tar_name}
+remote=${REMOTE_USER}@${REMOTE_HOST}
+remote_tar_file=/home/${REMOTE_USER}/tmp/${tar_name}
+remote_site_dir=/home/${REMOTE_USER}/public_html/sites/${domain}
+
+echo Creating tar file ${tar_file}
+cd ${site_dir}
+tar -vczf ../../${tar_file} *
+cd ../..
+
+echo
+echo Uploading tar file
+scp -P ${REMOTE_PORT} ${tar_file} ${remote}:${remote_tar_file}
+
+echo
+echo Unpacking remote tar file
+ssh -p ${REMOTE_PORT} ${remote} "cd ${remote_site_dir} && tar --keep-newer-files -vxzf ${remote_tar_file}"
