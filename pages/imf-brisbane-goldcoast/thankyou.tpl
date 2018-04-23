@@ -29,7 +29,7 @@ block body
         +cols('centered')
           +col(7)
             +tt(size=1) Thank You for Registering!
-            +st(size=3) Your place have been reseved for you
+            +st(size=3) Your place have been reserved for you
             .message.is-warning
               .message-header
                 | You will receive an email with the download link shortly
