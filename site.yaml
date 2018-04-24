@@ -27,5 +27,18 @@ products:
   wm_ebook_order: http://track.mobetrack.com/aff_c?offer_id=1722&url_id=3454
 
 subscribe_urls:
-  all: https://hooks.zapier.com/hooks/catch/3154330/fku647/
-  name_phone_email: https://hooks.zapier.com/hooks/catch/3154330/fib7bv/
+  mailchimp:
+    all: https://hooks.zapier.com/hooks/catch/3154330/fkq6pj/
+  mailjet:
+    all: https://hooks.zapier.com/hooks/catch/3154330/fku647/
+    name_phone_email: https://hooks.zapier.com/hooks/catch/3154330/fib7bv/
+
+email_tags:
+  mailchimp:
+    unsub: '*|UNSUB|*'
+    fname: '*|FNAME|*'
+    lname: '*|LNAME|*'
+  mailjet:
+    ubsub: '[[WORKFLOW_EXIT_UNSUB_LINK_EN]]'
+    fname: '[[data:name]]'
+    lname: '[[data:lastname]]'

@@ -14,7 +14,9 @@ meta:
     width: 612
     height: 792
 form:
-  url: all
+  url: mailchimp
+  fieldset: all
+  list: 12ca59a1f0
   confirm: enrichment/thankyou.html
   email:
     template: 366804
@@ -123,7 +125,7 @@ block body
         +tt Yes, I want the e-book!
         +st Please enter your details correctly to claim your special access.
         form.ajax(
-          action=subscribe_urls[form.url]
+          action=subscribe_urls[form.url][form.fieldset]
           accept-charset='utf-8'
           method='post'
         )
@@ -152,7 +154,7 @@ block body
             label.label Name
               span.has-text-danger &nbsp;*
             p.control.has-icons-left
-              input.input.is-medium(type='text' name='name' required)
+              input.input.is-medium(type='text' name='firstname' required)
               span.icon.is-small.is-left
                 i.fas.fa-user
           .field
@@ -167,7 +169,7 @@ block body
             label.label Phone (with Country Code)
             p.control.has-icons-left
               input.input.is-medium.autofill-country-code(
-                type='text' name='tel'
+                type='text' name='phone'
               )
               span.icon.is-small.is-left
                 i.fas.fa-phone

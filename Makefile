@@ -89,7 +89,7 @@ STAT_DST := $(filter-out $(IGNORE_PAGES),$(STAT_DST))
 FAVICONS := $(shell find static/assets/img -name 'favicon-*.png')
 FAVICONS := $(sort $(FAVICONS))
 
-export NODE_ENV REMOTE_USER REMOTE_HOST REMOTE_PORT
+export NODE_ENV REMOTE_USER REMOTE_HOST REMOTE_PORT EMAIL_SYS
 
 define postcss =
 	@mkdir -p $(@D)

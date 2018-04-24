@@ -4,7 +4,7 @@ set -eu
 
 NODE_ENV=${NODE_ENV:-staging}
 
-domain=$(bin/domain site.json site.${NODE_ENV}.json)
+domain=$(bin/domain site.yaml site.${NODE_ENV}.yaml)
 site_dir=public/${domain}
 depl_dir=deploy
 cur_date=$(date '+%Y-%m-%d.%H%M%S')

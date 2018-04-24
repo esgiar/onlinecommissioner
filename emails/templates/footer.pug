@@ -5,7 +5,7 @@ mj-section(background-color='#eee')
         You are currently signed up to receive this type of emails from
         #[a(href=baseURL)= meta.site].
       p
-        a(href='[[WORKFLOW_EXIT_UNSUB_LINK_EN]]').
+        a(href=email_tags[email_sys].unsub).
           To unsubscribe, click here
-      p.
-        Copyright &copy; 2018 #{meta.site}. All rights reserved.
+      if email_tags[email_sys].provider
+        p= email_tags[email_sys].provider

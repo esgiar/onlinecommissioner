@@ -8,6 +8,7 @@ const helpers = require('./helpers')
 
 const SEP = /\\+/g
 const DEFAULT_LANG = 'nunjucks'
+const IMPORT_ENVS = ['EMAIL_SYS']
 
 function loadYAML (file) {
   let yml
@@ -81,6 +82,10 @@ function prepareContext (options) {
   c.env = process.env.NODE_ENV || 'development'
   c.moment = moment
   c._ = _
+
+  IMPORT_ENVS.forEach((name) => {
+    c[_.snakeCase(name)] = process.env[name]
+  })
 
   return c
 }
