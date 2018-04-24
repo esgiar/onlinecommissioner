@@ -14,7 +14,7 @@ meta:
     width: 612
     height: 792
 form:
-  action: https://hooks.zapier.com/hooks/catch/3154330/fib7bv/
+  url: all
   confirm: enrichment/thankyou.html
   email:
     template: 366804
@@ -123,7 +123,7 @@ block body
         +tt Yes, I want the e-book!
         +st Please enter your details correctly to claim your special access.
         form.ajax(
-          action=form.action
+          action=subscribe_urls[form.url]
           accept-charset='utf-8'
           method='post'
         )

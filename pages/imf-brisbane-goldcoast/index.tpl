@@ -4,7 +4,7 @@ lang: pug
 meta:
  title: 'IM Freedom Workshop: Free Live Masterclass in Brisbane & Goldcoast'
 form:
-  action: https://hooks.zapier.com/hooks/catch/3154330/fib7bv/
+  url: all
   confirm: imf-brisbane-goldcoast/thankyou.html
 ---
 
@@ -163,7 +163,7 @@ block body
     +tt Limited Time Only! #[span.has-text-danger Register Now!]
     +st Complete the form and select the best time and location for you
     form.ajax(
-      action=form.action
+      action=subscribe_urls[form.url]
       accept-charset='utf-8'
       method='post'
     )
@@ -176,6 +176,14 @@ block body
         type='hidden'
         name='list_id'
         value=form.list
+      )
+      input(
+        type='hidden'
+        name='event_location'
+      )
+      input(
+        type='hidden'
+        name='event_datetime'
       )
       if form.email
         input(
@@ -215,8 +223,8 @@ block body
               span.icon.is-left
                 i.fas.fa-phone
         +col('half')
-          each loc in locations
-            - var date = moment(loc.date)
+          each loc, i in locations
+            - var date = moment.tz(loc.date, 'Australia/Brisbane')
             - var dstr = date.format('dddd, MMMM D, YYYY')
             .field
               label.label #{dstr}
@@ -225,15 +233,18 @@ block body
                 br
                 span.has-text-weight-normal #{loc.addr}
               p.control
-                for time in ['12:30 pm', '6:30 pm']
+                for time, j in [{h:12,m:30}, {h:18,m:30}]
+                  - var dt = moment(date).set(time)
                   label.radio
-                    input.radio(
+                    input.radio.set-event-fields(
+                      checked=(i+j === 0)
                       type='radio'
-                      name='location_time'
-                      value=`${dstr} @ ${time} in ${loc.name}`
+                      name='event'
+                      data-event-datetime=dt.toISOString()
+                      data-event-location=`${loc.name}, ${loc.addr}`
                     )
                     |
-                    | #{time}
+                    | #{dt.format('h:mm a')}
       p.field.has-text-centered
         button.button.is-danger.is-large(type='submit')
           | Complete Registration
@@ -243,7 +254,9 @@ block body
   +scripts(
     s('js/zepto.min.js'),
     s('js/moment.min.js'),
+    s('js/moment-timezone-with-data.min.js'),
     s('js/countdown.js'),
     s('js/form.js'),
-    s('js/modal.js')
+    s('js/modal.js'),
+    s('pages/imf-brisbane-goldcoast/js/eventfields.js')
   )

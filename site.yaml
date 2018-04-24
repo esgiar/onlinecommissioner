@@ -25,3 +25,7 @@ products:
   wm_system_order: http://track.mobetrack.com/aff_c?offer_id=1724&url_id=3452
   wm_ebook_page: http://track.mobetrack.com/aff_c?offer_id=1722
   wm_ebook_order: http://track.mobetrack.com/aff_c?offer_id=1722&url_id=3454
+
+subscribe_urls:
+  all: https://hooks.zapier.com/hooks/catch/3154330/fku647/
+  name_phone_email: https://hooks.zapier.com/hooks/catch/3154330/fib7bv/

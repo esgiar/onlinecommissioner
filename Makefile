@@ -21,7 +21,6 @@ EXTS    := njk pug
 FI_OPTS := $(foreach n,$(EXTS),-o -name '*.$(n)')
 FI_OPTS := $(wordlist 2,$(words $(FI_OPTS)),$(FI_OPTS))
 TPL_DEP := $(shell find templates $(FI_OPTS))
-TPL_DEP += $(shell find pages -name '*.tpl' -path '*/templates/*')
 TPL_DEP += html-minifier.json
 PAGES   := $(shell find pages -name '*.tpl' -not -path '*/templates/*')
 PAGES   := $(PAGES:pages/%.tpl=$(PUBLIC)/%.html)
@@ -76,7 +75,9 @@ CSS_DEP += $(shell find node_modules/bulma -name '*.scss' -o -name '*.sass')
 
 # Javascript
 JS_SRC := $(shell find scripts -name '*.js')
+JS_SRC += $(shell find pages -name '*.js')
 JS_DST := $(JS_SRC:scripts/%.js=$(PUBLIC)/assets/js/%.js)
+JS_DST := $(JS_DST:pages/%.js=$(PUBLIC)/assets/pages/%.js)
 
 # Other static files
 STAT_SRC := $(shell find static -type f)
@@ -144,6 +145,9 @@ $(CSS_DST): $(CSS_DEP)
 	sass --load-path=node_modules $(CSS_SRC) | postcss > $@
 
 $(PUBLIC)/assets/js/%.js: scripts/%.js rollup.config.js
+	$(rollup)
+
+$(PUBLIC)/assets/pages/%.js: pages/%.js rollup.config.js
 	$(rollup)
 
 $(PUBLIC)/%.jpg: static/%.jpg

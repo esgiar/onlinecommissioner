@@ -3,7 +3,7 @@ const Path = require('path')
 const _ = require('lodash')
 const yaml = require('js-yaml')
 const matter = require('gray-matter')
-const moment = require('moment')
+const moment = require('moment-timezone')
 const helpers = require('./helpers')
 
 const SEP = /\\+/g

@@ -1,3 +1,3 @@
-- [autom] zapier: automatically add cutom fields in MJ subscribe zap
-- [autom] zapier: add task to store imf contacts in google sheets
-- [email] design imf welcome email
+- [design] rewrite email templates using pug
+- [email]  design imf welcome email
+- [autom]  zapier: add task to store imf contacts in google sheets
