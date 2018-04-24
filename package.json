@@ -10,12 +10,12 @@
     "type": "git",
     "url": "https://github.com/esgiar/onlinecommissioner.git"
   },
-  "author": "zzzaim",
+  "author": "Zaim Bakar",
   "license": "UNLICENSED",
   "bugs": {
-    "url": "https://github.com/esgiar/imf-2018/issues"
+    "url": "https://github.com/esgiar/onlinecommissioner/issues"
   },
-  "homepage": "https://github.com/esgiar/imf-2018#readme",
+  "homepage": "https://github.com/esgiar/onlinecommissioner#readme",
   "devDependencies": {
     "autoprefixer": "^8.3.0",
     "babel-core": "^6.26.0",
