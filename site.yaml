@@ -1,0 +1,27 @@
+meta:
+  site: Online Commissioner
+  twitter: '@oncommissioner'
+
+logo: img/logo-online_commissioner-2x1.png
+email: bakar.rahman@onlinecommissioner.com
+author: Bakar Rahman
+fb: https://fb.me/my.online.commissioner
+geoipiScriptURL: https://onlinecommissioner.com/geoip.php
+
+affiliates:
+  id: '2154964'
+  key: aff_id
+  source_ids:
+    - fbpost
+    - fbad
+    - email
+    - tweet
+  source_key: source
+  sub1_key: aff_sub
+  sub2_key: aff_sub2
+
+products:
+  wm_system_page: http://track.mobetrack.com/aff_c?offer_id=1724
+  wm_system_order: http://track.mobetrack.com/aff_c?offer_id=1724&url_id=3452
+  wm_ebook_page: http://track.mobetrack.com/aff_c?offer_id=1722
+  wm_ebook_order: http://track.mobetrack.com/aff_c?offer_id=1722&url_id=3454

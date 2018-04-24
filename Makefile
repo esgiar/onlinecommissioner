@@ -6,7 +6,7 @@ PUBLIC   := public
 include config.mk
 
 # Base template context
-CONTEXT := site.json site.$(NODE_ENV).json
+CONTEXT := site.yaml site.$(NODE_ENV).yaml
 
 # Build to public/<domain>
 DOMAIN := $(shell bin/domain $(CONTEXT))
