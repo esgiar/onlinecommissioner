@@ -2,7 +2,8 @@ import $ from 'zepto'
 
 const fields = {
   'event-location': $('input[name=event_location]'),
-  'event-datetime': $('input[name=event_datetime]')
+  'event-datetime': $('input[name=event_datetime]'),
+  'event-datetime-format': $('input[name=event_datetime_format]')
 }
 
 $.each(fields, (name, $input) => {

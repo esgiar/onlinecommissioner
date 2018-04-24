@@ -185,6 +185,10 @@ block body
         type='hidden'
         name='event_datetime'
       )
+      input(
+        type='hidden'
+        name='event_datetime_format'
+      )
       if form.email
         input(
           type='hidden'
@@ -226,6 +230,7 @@ block body
           each loc, i in locations
             - var date = moment.tz(loc.date, 'YYYY-MM-DD', timezone)
             - var dstr = date.format('dddd, MMMM D, YYYY')
+            - var dsho = date.format('MMMM D')
             .field
               label.label #{dstr}
                 br
@@ -235,12 +240,14 @@ block body
               p.control
                 each time, j in loc.time
                   - var dt = moment(date).set(time)
+                  - var ds = dt.format('h:mm a')
                   label.radio
                     input.radio.set-event-fields(
                       checked=(i+j === 0)
                       type='radio'
                       name='_event'
                       data-event-datetime=dt.toISOString()
+                      data-event-datetime-format=`${dsho} at ${ds}`
                       data-event-location=loc.name
                     )
                     |
