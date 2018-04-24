@@ -3,10 +3,9 @@
 lang: pug
 meta:
  title: 'IM Freedom Workshop: Free Live Masterclass in Brisbane & Goldcoast'
-imfBrisbaneGoldcoast:
-  form:
-    action: https://hooks.zapier.com/hooks/catch/3154330/fszc27/
-    confirm: imf-brisbane-goldcoast/thankyou.html
+form:
+  action: https://hooks.zapier.com/hooks/catch/3154330/fib7bv/
+  confirm: imf-brisbane-goldcoast/thankyou.html
 ---
 
 extends ../../templates/layouts/base
@@ -164,30 +163,30 @@ block body
     +tt Limited Time Only! #[span.has-text-danger Register Now!]
     +st Complete the form and select the best time and location for you
     form.ajax(
-      action=imfBrisbaneGoldcoast.form.action
+      action=form.action
       accept-charset='utf-8'
       method='post'
     )
       input(
         type='hidden'
         name='confirm_url'
-        value=uri(imfBrisbaneGoldcoast.form.confirm)
+        value=uri(form.confirm)
       )
       input(
         type='hidden'
         name='list_id'
-        value=imfBrisbaneGoldcoast.list
+        value=form.list
       )
-      if imfBrisbaneGoldcoast.email
+      if form.email
         input(
           type='hidden'
           name='email_template_id'
-          value=imfBrisbaneGoldcoast.email.template
+          value=form.email.template
         )
         input(
           type='hidden'
           name='email_subject'
-          value=imfBrisbaneGoldcoast.email.subject
+          value=form.email.subject
         )
       +cols
         +col('half')

@@ -26,12 +26,46 @@ TPL_DEP += html-minifier.json
 PAGES   := $(shell find pages -name '*.tpl' -not -path '*/templates/*')
 PAGES   := $(PAGES:pages/%.tpl=$(PUBLIC)/%.html)
 PAGES   := $(filter-out $(IGNORE_PAGES),$(PAGES))
+TPL_CTX  = pages/%.tpl \
+		   pages/%.json \
+		   pages/%.$(NODE_ENV).json \
+		   pages/%.yaml \
+		   pages/%.$(NODE_ENV).yaml \
+		   pages/$(dir %)index.json \
+		   pages/$(dir %)index.$(NODE_ENV).json \
+		   pages/$(dir %)index.yaml \
+		   pages/$(dir %)index.$(NODE_ENV).yaml
+TPL_ARGS = pages/$*.json \
+		   pages/$*.$(NODE_ENV).json \
+		   pages/$*.yaml \
+		   pages/$*.$(NODE_ENV).yaml \
+		   pages/$(*D)/index.json \
+		   pages/$(*D)/index.$(NODE_ENV).json \
+		   pages/$(*D)/index.yaml \
+		   pages/$(*D)/index.$(NODE_ENV).yaml
 
 # Emails templates
 MJML   := emails/mjml/$(DOMAIN)
 EM_TPL := $(shell find emails -name '*.tpl')
 EM_MJM := $(EM_TPL:emails/%.tpl=$(MJML)/%.mjml)
 EM_HTM := $(EM_MJM:$(MJML)/%.mjml=$(PUBLIC)/emails/%.html)
+EM_CTX  = emails/%.tpl \
+		  emails/%.json \
+		  emails/%.$(NODE_ENV).json \
+		  emails/%.yaml \
+		  emails/%.$(NODE_ENV).yaml \
+		  emails/$(dir %)index.json \
+		  emails/$(dir %)index.$(NODE_ENV).json \
+		  emails/$(dir %)index.yaml \
+		  emails/$(dir %)index.$(NODE_ENV).yaml
+EM_ARGS = emails/$*.json \
+		  emails/$*.$(NODE_ENV).json \
+		  emails/$*.yaml \
+		  emails/$*.$(NODE_ENV).yaml \
+		  emails/$(*D)/index.json \
+		  emails/$(*D)/index.$(NODE_ENV).json \
+		  emails/$(*D)/index.yaml \
+		  emails/$(*D)/index.$(NODE_ENV).yaml
 
 # CSS
 CSS_SRC := styles/index.scss
@@ -92,17 +126,15 @@ $(PUBLIC)/emails/%.html: $(MJML)/%.mjml
 	@mkdir -p $(@D)
 	mjml $< -o $@
 
-$(MJML)/%.mjml: emails/%.tpl $(CONTEXT) emails/%.json emails/%.yaml $(TPL_DEP)
+$(MJML)/%.mjml: $(EM_CTX) $(CONTEXT) $(TPL_DEP)
 	@mkdir -p $(@D)
-	render $< $(CONTEXT) emails/$*.json emails/$*.yaml \
-	  emails/$(*D)/index.json emails/$(*D).yaml \
-	  | html-beautify -m 1 -s 2 -f - > $@
+	@echo render $< \> $@
+	@render $< $(CONTEXT) $(EM_ARGS) | html-beautify -m 1 -s 2 -f - > $@
 
-$(PUBLIC)/%.html: pages/%.tpl $(CONTEXT) pages/%.json pages/%.yaml $(TPL_DEP)
+$(PUBLIC)/%.html: $(TPL_CTX) $(CONTEXT) $(TPL_DEP)
 	@mkdir -p $(@D)
-	render $< $(CONTEXT) pages/$*.json pages/$*.yaml \
-	  pages/$(*D)/index.json pages/$(*D)/index.yaml \
-	  | html-minifier -c html-minifier.json > $@
+	@echo render $< \> $@
+	@render $< $(CONTEXT) $(TPL_ARGS) | html-minifier -c html-minifier.json > $@
 
 $(PUBLIC)/favicon.ico: $(FAVICONS)
 	png2ico $@ $^

@@ -13,10 +13,9 @@ meta:
     url: img/product-enrichment_ebook-1x2.jpg
     width: 612
     height: 792
-enrichment:
-  form:
-    action: https://hooks.zapier.com/hooks/catch/3154330/fszc27/
-    confirm: enrichment/thankyou.html
+form:
+  action: https://hooks.zapier.com/hooks/catch/3154330/fib7bv/
+  confirm: enrichment/thankyou.html
   email:
     template: 366804
     subject: >
@@ -124,30 +123,30 @@ block body
         +tt Yes, I want the e-book!
         +st Please enter your details correctly to claim your special access.
         form.ajax(
-          action=enrichment.form.action
+          action=form.action
           accept-charset='utf-8'
           method='post'
         )
           input(
             type='hidden'
             name='confirm_url'
-            value=uri(enrichment.form.confirm)
+            value=uri(form.confirm)
           )
           input(
             type='hidden'
             name='list_id'
-            value=enrichment.list
+            value=form.list
           )
-          if enrichment.email
+          if form.email
             input(
               type='hidden'
               name='email_template_id'
-              value=enrichment.email.template
+              value=form.email.template
             )
             input(
               type='hidden'
               name='email_subject'
-              value=enrichment.email.subject
+              value=form.email.subject
             )
           .field
             label.label Name
