@@ -45,6 +45,7 @@ TPL_ARGS = pages/$*.json \
 
 # Emails templates
 MJML   := emails/mjml/$(DOMAIN)
+EM_DEP := $(shell find emails $(FI_OPTS))
 EM_TPL := $(shell find emails -name '*.tpl')
 EM_MJM := $(EM_TPL:emails/%.tpl=$(MJML)/%.mjml)
 EM_HTM := $(EM_MJM:$(MJML)/%.mjml=$(PUBLIC)/emails/%.html)
@@ -127,7 +128,7 @@ $(PUBLIC)/emails/%.html: $(MJML)/%.mjml
 	@mkdir -p $(@D)
 	mjml $< -o $@
 
-$(MJML)/%.mjml: $(EM_CTX) $(CONTEXT) $(TPL_DEP)
+$(MJML)/%.mjml: $(EM_CTX) $(CONTEXT) $(EM_DEP)
 	@mkdir -p $(@D)
 	@echo render $< \> $@
 	@render $< $(CONTEXT) $(EM_ARGS) | html-beautify -m 1 -s 2 -f - > $@

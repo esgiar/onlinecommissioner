@@ -1,0 +1,43 @@
+doctype html
+
+mjml
+  mj-head
+    mj-title= title
+    mj-attributes
+      block attributes
+        mj-class(
+          name='h1'
+          color='#222'
+          align='center'
+          font-weight='bold'
+          font-size='32px'
+        )/
+        mj-class(
+          name='h2'
+          color='#222'
+          align='center'
+          font-weight='bold'
+          font-size='24px'
+        )/
+        mj-class(
+          name='h3'
+          color='#222'
+          align='center'
+          font-weight='bold'
+          font-size='18px'
+        )/
+        mj-all(
+          font-family='Helvetica Neue, Helvetica, Arial, sans-serif'
+          font-size='16px'
+          line-height='1.5'
+        )/
+        mj-section(
+          background-color='#fff'
+          full-width='full-width'
+        )/
+  mj-body
+    mj-container
+      block body
+        //- body -//
+      block footer
+        include ./footer

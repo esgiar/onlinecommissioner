@@ -1,0 +1,11 @@
+mixin header
+  mj-section&attributes(attributes)
+    mj-column
+      mj-image(
+        width='110'
+        src=s('img/logo-online_commissioner_tran_blk-2x1.png')
+      )/
+      mj-text(mj-class='h2' padding-bottom='0' color='#546E7A').
+        Hello {{ data:name }} {{ data:lastname }}
+      mj-text(mj-class='h1' padding-top="0")
+        block
