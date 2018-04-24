@@ -4,6 +4,7 @@ const _ = require('lodash')
 const yaml = require('js-yaml')
 const matter = require('gray-matter')
 const moment = require('moment')
+const helpers = require('./helpers')
 
 const SEP = /\\+/g
 const DEFAULT_LANG = 'nunjucks'
@@ -69,15 +70,17 @@ function prepareContext (options) {
   const p = parseFilename(options.filename, options.root, options.index)
   const c = loadContext(options.contexts)
 
+  _.assign(c, _.mapValues(helpers, (fn) => (
+    _.isFunction(fn) ? _.bind(fn, c) : fn
+  )))
+
   c.meta = c.meta || {}
   c.meta.url = joinURI(c.baseURL, p)
   c.filename = options.filename
   c.path = p
   c.env = process.env.NODE_ENV || 'development'
-  c.uri = (path) => joinURI(c.baseURL, path)
-  c.s = (path) => joinURI(c.staticURL, path)
-  c._ = _
   c.moment = moment
+  c._ = _
 
   return c
 }

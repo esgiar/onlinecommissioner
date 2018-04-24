@@ -4,7 +4,6 @@ lang: pug
 meta:
   title: Thank you for downloading the Enrichment eBook
   description:
-productURL: "http://track.mobetrack.com/aff_c?offer_id=1724&aff_sub=enrichment_ebook&url_id=3452"
 content:
   epiphany:
     - h: TOTAL PART-TIME
@@ -58,16 +57,20 @@ include ../../templates/mixins/checklist
 include ../../templates/mixins/columns
 include ../../templates/mixins/header
 include ../../templates/mixins/img
+include ../../templates/mixins/productlink
 include ../../templates/mixins/section
-
-mixin productLink
-  a(href=`${productURL}&aff_id=${affiliateID}`)&attributes(attributes)
-    block
-
 
 mixin actionButton
   .has-text-centered
-    +productLink(class=`button is-large is-${attributes.color||'danger'} is-rounded`)
+    +productLink(
+      href=aff('wm_system_order')
+      class=`
+        button
+        is-large
+        is-rounded
+        is-${attributes.color||'danger'}
+      `
+    )
       block
 
 block body

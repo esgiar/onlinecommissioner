@@ -5,14 +5,13 @@ meta:
   title: >
     IM Freedom Workshop - Free Live Masterclass at Brisbane & GoldCoast -
     You've Registered
-products:
-  wifi_millionaire_ebook: "https://wifimillionairebook.com/forms/order.php?aff_id=2154964"
 ---
 
 extends ../../templates/layouts/base
 include ../../templates/mixins/columns
 include ../../templates/mixins/header
 include ../../templates/mixins/img
+include ../../templates/mixins/productlink
 include ../../templates/mixins/section
 
 block body
@@ -54,8 +53,8 @@ block body
           p.
             By using these productivity tips, you’ll learn how to filter out
             distractions, and make more money in less time.
-          a.button.is-warning.is-medium.is-rounded(
-            href=products.wifi_millionaire_ebook
+          +productLink.button.is-warning.is-medium.is-rounded(
+            href=aff('wm_ebook_order')
           ).
             Get your copy now for only $3.00
       +col('half')
