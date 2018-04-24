@@ -1,10 +1,29 @@
+form:
+  list:
+    mailchimp: 74b580e82c
+timezone: 'Australia/Brisbane'
 locations:
   - name: Royal on the Park
-    date: 2018-05-14
     addr: 152 Alice Street, Brisbane QLD 4000
+    date: '2018-05-14'
+    time:
+      - h: 12
+        m: 30
+      - h: 18
+        m: 30
   - name: Royal on the Park
-    date: 2018-05-15
     addr: 152 Alice Street, Brisbane QLD 4000
+    date: '2018-05-15'
+    time:
+      - h: 12
+        m: 30
+      - h: 18
+        m: 30
   - name: Novotel Surfers Paradise
-    date: 2018-05-16
     addr: 3105 Surfers Paradise QLD 4217
+    date: '2018-05-16'
+    time:
+      - h: 12
+        m: 30
+      - h: 18
+        m: 30

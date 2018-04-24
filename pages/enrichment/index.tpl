@@ -14,15 +14,8 @@ meta:
     width: 612
     height: 792
 form:
-  url: mailchimp
-  fieldset: all
-  list: 12ca59a1f0
+  url: all
   confirm: enrichment/thankyou.html
-  email:
-    template: 366804
-    subject: >
-      Welcome{% if data:name:false %} {{ data:name }}{% endif %}! Your
-      Enrichment eBook is ready!
 ---
 
 extends ../../templates/layouts/base
@@ -125,7 +118,7 @@ block body
         +tt Yes, I want the e-book!
         +st Please enter your details correctly to claim your special access.
         form.ajax(
-          action=subscribe_urls[form.url][form.fieldset]
+          action=subscribe_urls[email_sys][form.url]
           accept-charset='utf-8'
           method='post'
         )
@@ -137,7 +130,7 @@ block body
           input(
             type='hidden'
             name='list_id'
-            value=form.list
+            value=form.list[email_sys]
           )
           if form.email
             input(

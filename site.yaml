@@ -38,6 +38,7 @@ email_tags:
     unsub: '*|UNSUB|*'
     fname: '*|FNAME|*'
     lname: '*|LNAME|*'
+    provider: '*|REWARDS|*'
   mailjet:
     ubsub: '[[WORKFLOW_EXIT_UNSUB_LINK_EN]]'
     fname: '[[data:name]]'

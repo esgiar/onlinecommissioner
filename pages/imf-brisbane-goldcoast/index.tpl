@@ -163,7 +163,7 @@ block body
     +tt Limited Time Only! #[span.has-text-danger Register Now!]
     +st Complete the form and select the best time and location for you
     form.ajax(
-      action=subscribe_urls[form.url]
+      action=subscribe_urls[email_sys][form.url]
       accept-charset='utf-8'
       method='post'
     )
@@ -175,7 +175,7 @@ block body
       input(
         type='hidden'
         name='list_id'
-        value=form.list
+        value=form.list[email_sys]
       )
       input(
         type='hidden'
@@ -224,7 +224,7 @@ block body
                 i.fas.fa-phone
         +col('half')
           each loc, i in locations
-            - var date = moment.tz(loc.date, 'Australia/Brisbane')
+            - var date = moment.tz(loc.date, 'YYYY-MM-DD', timezone)
             - var dstr = date.format('dddd, MMMM D, YYYY')
             .field
               label.label #{dstr}
@@ -233,15 +233,15 @@ block body
                 br
                 span.has-text-weight-normal #{loc.addr}
               p.control
-                for time, j in [{h:12,m:30}, {h:18,m:30}]
+                each time, j in loc.time
                   - var dt = moment(date).set(time)
                   label.radio
                     input.radio.set-event-fields(
                       checked=(i+j === 0)
                       type='radio'
-                      name='event'
+                      name='_event'
                       data-event-datetime=dt.toISOString()
-                      data-event-location=`${loc.name}, ${loc.addr}`
+                      data-event-location=loc.name
                     )
                     |
                     | #{dt.format('h:mm a')}
