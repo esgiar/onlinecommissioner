@@ -16,56 +16,39 @@ ASSETS := $(PUBLIC)/assets
 # Set full path for ignored pages
 IGNORE_PAGES := $(IGNORE_PAGES:%=public/$(DOMAIN)/%)
 
+# Template context file dependencies
+TPL_CTX = pages/%.yaml \
+		  pages/%.$(NODE_ENV).yaml \
+		  pages/$(dir %)index.yaml \
+		  pages/$(dir %)index.$(NODE_ENV).yaml
+
+# Above, for command line args
+TPL_ARGS = pages/$*.yaml \
+		   pages/$*.$(NODE_ENV).yaml \
+		   pages/$(*D)/index.yaml \
+		   pages/$(*D)/index.$(NODE_ENV).yaml
+
 # HTML Pages
 EXTS    := njk pug
 FI_OPTS := $(foreach n,$(EXTS),-o -name '*.$(n)')
 FI_OPTS := $(wordlist 2,$(words $(FI_OPTS)),$(FI_OPTS))
 TPL_DEP := $(shell find templates $(FI_OPTS))
+TPL_DEP := $(shell find pages $(FI_OPTS))
 TPL_DEP += html-minifier.json
-PAGES   := $(shell find pages -name '*.tpl' -not -path '*/templates/*')
+PAGES   := $(shell find pages -name '*.tpl')
 PAGES   := $(PAGES:pages/%.tpl=$(PUBLIC)/%.html)
 PAGES   := $(filter-out $(IGNORE_PAGES),$(PAGES))
-TPL_CTX  = pages/%.tpl \
-		   pages/%.json \
-		   pages/%.$(NODE_ENV).json \
-		   pages/%.yaml \
-		   pages/%.$(NODE_ENV).yaml \
-		   pages/$(dir %)index.json \
-		   pages/$(dir %)index.$(NODE_ENV).json \
-		   pages/$(dir %)index.yaml \
-		   pages/$(dir %)index.$(NODE_ENV).yaml
-TPL_ARGS = pages/$*.json \
-		   pages/$*.$(NODE_ENV).json \
-		   pages/$*.yaml \
-		   pages/$*.$(NODE_ENV).yaml \
-		   pages/$(*D)/index.json \
-		   pages/$(*D)/index.$(NODE_ENV).json \
-		   pages/$(*D)/index.yaml \
-		   pages/$(*D)/index.$(NODE_ENV).yaml
+PG_CTX   = pages/%.tpl $(TPL_CTX)
+PG_ARGS  = $(TPL_ARGS)
 
 # Emails templates
-MJML   := emails/mjml/$(DOMAIN)
-EM_DEP := $(shell find emails $(FI_OPTS))
-EM_TPL := $(shell find emails -name '*.tpl')
-EM_MJM := $(EM_TPL:emails/%.tpl=$(MJML)/%.mjml)
-EM_HTM := $(EM_MJM:$(MJML)/%.mjml=$(PUBLIC)/emails/%.html)
-EM_CTX  = emails/%.tpl \
-		  emails/%.json \
-		  emails/%.$(NODE_ENV).json \
-		  emails/%.yaml \
-		  emails/%.$(NODE_ENV).yaml \
-		  emails/$(dir %)index.json \
-		  emails/$(dir %)index.$(NODE_ENV).json \
-		  emails/$(dir %)index.yaml \
-		  emails/$(dir %)index.$(NODE_ENV).yaml
-EM_ARGS = emails/$*.json \
-		  emails/$*.$(NODE_ENV).json \
-		  emails/$*.yaml \
-		  emails/$*.$(NODE_ENV).yaml \
-		  emails/$(*D)/index.json \
-		  emails/$(*D)/index.$(NODE_ENV).json \
-		  emails/$(*D)/index.yaml \
-		  emails/$(*D)/index.$(NODE_ENV).yaml
+EM_DIR := emails/$(DOMAIN)
+EM_DEP := $(shell find pages $(FI_OPTS))
+EM_TPL := $(shell find pages -name '*.emt')
+EM_MJM := $(EM_TPL:pages/%.emt=$(EM_DIR)/%.mjml)
+EM_HTM := $(EM_MJM:%.mjml=%.html)
+EM_CTX  = pages/%.emt $(TPL_CTX)
+EM_ARGS = $(TPL_ARGS)
 
 # CSS
 CSS_SRC := styles/index.scss
@@ -90,6 +73,9 @@ FAVICONS := $(shell find static/assets/img -name 'favicon-*.png')
 FAVICONS := $(sort $(FAVICONS))
 
 export NODE_ENV REMOTE_USER REMOTE_HOST REMOTE_PORT EMAIL_SYS
+
+html-min = html-minifier -c html-minifier.json
+html-pre = html-beautify -m 1 -s 2 -f -
 
 define postcss =
 	@mkdir -p $(@D)
@@ -124,19 +110,22 @@ js-libs: $(JS_LIB)
 
 static: $(STAT_DST) $(PUBLIC)/favicon.ico
 
-$(PUBLIC)/emails/%.html: $(MJML)/%.mjml
+$(EM_DIR)/%.html: $(EM_DIR)/%.mjml
 	@mkdir -p $(@D)
-	mjml $< -o $@
+	@echo mjml $< \> $@
+	@mjml $< -o $@.out
+	@$(html-min) $@.out > $@
+	@rm $@.out
 
-$(MJML)/%.mjml: $(EM_CTX) $(CONTEXT) $(EM_DEP)
+$(EM_DIR)/%.mjml: $(EM_CTX) $(CONTEXT) $(EM_DEP)
 	@mkdir -p $(@D)
 	@echo render $< \> $@
-	@render $< $(CONTEXT) $(EM_ARGS) | html-beautify -m 1 -s 2 -f - > $@
+	@render $< $(CONTEXT) $(EM_ARGS) | $(html-pre) > $@
 
-$(PUBLIC)/%.html: $(TPL_CTX) $(CONTEXT) $(TPL_DEP)
+$(PUBLIC)/%.html: $(PG_CTX) $(CONTEXT) $(TPL_DEP)
 	@mkdir -p $(@D)
 	@echo render $< \> $@
-	@render $< $(CONTEXT) $(TPL_ARGS) | html-minifier -c html-minifier.json > $@
+	@render $< $(CONTEXT) $(PG_ARGS) | $(html-min) > $@
 
 $(PUBLIC)/favicon.ico: $(FAVICONS)
 	png2ico $@ $^
@@ -161,14 +150,14 @@ $(PUBLIC)/%: static/%
 	@mkdir -p $(@D)
 	cp $< $@
 
-%.json::
-	@touch $@
-
 %.yaml::
 	@touch $@
 
 server:
 	http-server $(PUBLIC) -p 80
+
+server-emails:
+	http-server $(EM_DIR) -p 8080
 
 server-ssl: deploy/$(DOMAIN).crt deploy/$(DOMAIN).key
 	http-server $(PUBLIC) -p 443 --ssl \

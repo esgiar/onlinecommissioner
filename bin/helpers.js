@@ -24,5 +24,10 @@ module.exports = {
     )
     _(params).each((val, key) => url.searchParams.set(key, val))
     return url.href
+  },
+
+  nl2br (str, isX = false) {
+    const br = isX ? '<br/>' : '<br>'
+    return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, `$1${br}$2`)
   }
 }

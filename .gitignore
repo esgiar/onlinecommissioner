@@ -1,12 +1,8 @@
 node_modules/
 public/
 deploy/
+emails/
 locals.mk
-site.*.json
-*.development.json
-*.production.json
-*.staging.json
-site.*.yaml
 *.development.yaml
 *.production.yaml
 *.staging.yaml
