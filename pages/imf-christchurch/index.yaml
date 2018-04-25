@@ -1,0 +1,35 @@
+form:
+  list:
+    mailchimp: 'a80f4636a0'
+timezone: 'NZ'
+locations:
+  - name: |
+      Chateau on the Park,
+      a Doubletree by Hilton
+    addr: 189 Deans Avenue Riccarton, 8011 Christchurch, NZ
+    date: '2018-05-29'
+    time:
+      - h: 12
+        m: 30
+      - h: 18
+        m: 00
+  - name: |
+      Chateau on the Park,
+      a Doubletree by Hilton
+    addr: 189 Deans Avenue Riccarton, 8011 Christchurch, NZ
+    date: '2018-05-30'
+    time:
+      - h: 12
+        m: 30
+      - h: 18
+        m: 00
+  - name: |
+      Chateau on the Park,
+      a Doubletree by Hilton
+    addr: 189 Deans Avenue Riccarton, 8011 Christchurch, NZ
+    date: '2018-05-31'
+    time:
+      - h: 12
+        m: 30
+      - h: 18
+        m: 00
