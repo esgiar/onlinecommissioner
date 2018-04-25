@@ -10,9 +10,12 @@ meta:
     home-based online business. Read how I enrich myself after making the
     transition from a traditional to an online entrepreneur.
   image:
-    url: img/product-enrichment_ebook-1x2.jpg
-    width: 612
-    height: 792
+    - url: img/product-enrichment_ebook_giveaway-3x2.jpg
+      width: 900
+      height: 600
+    - url: img/product-enrichment_ebook-1x2.jpg
+      width: 612
+      height: 792
 form:
   url: all
   confirm: enrichment/thankyou.html
