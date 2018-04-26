@@ -12,13 +12,19 @@ include ../../templates/mixins/scripts
 include ../../templates/mixins/columns
 
 mixin actionButton
-  button(class=`
-    button
-    is-success
-    is-size-4
-    has-text-weight-bold
-    open-modal
-  ` data-modal='sub-form')
+  button(
+    class=`
+      button
+      is-success
+      is-size-4
+      has-text-weight-bold
+      open-modal
+    `
+    data-modal='sub-form'
+    ga-on='click'
+    ga-event-category=`Form: ${path}`
+    ga-event-action='open'
+  )
     block
 
 block body

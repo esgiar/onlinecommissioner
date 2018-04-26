@@ -10,8 +10,19 @@ include ../../templates/mixins/section
 
 mixin actionButton
   .content.has-text-centered
-    button.button.is-large.is-danger.is-rounded.has-text-weight-bold.open-modal(
+    button(
+      class=`
+        button
+        is-large
+        is-danger
+        is-rounded
+        has-text-weight-bold
+        open-modal
+      `
       data-modal='sub-form'
+      ga-on='click'
+      ga-event-category=`Form: ${path}`
+      ga-event-action='open'
     )
       if block
         block
