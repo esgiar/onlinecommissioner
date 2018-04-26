@@ -2,6 +2,7 @@ node_modules/
 public/
 deploy/
 emails/
+!pages/**/emails
 locals.mk
 *.development.yaml
 *.production.yaml

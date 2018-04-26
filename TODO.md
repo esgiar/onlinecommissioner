@@ -1,2 +1,2 @@
-- [email] design imf welcome email
-- [autom] zapier: add task to store imf contacts in google sheets
+- review Makefile: faster builds, remove redundancies, DRY
+- testing: automate testing, link checking, validate tags, etc.

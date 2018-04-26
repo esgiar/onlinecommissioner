@@ -1,9 +1,6 @@
 ---
-# vim: set ft=pug:
-lang: pug
-meta:
-  title: Thank you for downloading the Enrichment eBook
-  description:
+vim: ft=pug
+title: Thank you for downloading the Enrichment eBook
 content:
   epiphany:
     - h: TOTAL PART-TIME

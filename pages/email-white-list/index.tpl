@@ -1,8 +1,6 @@
 ---
-# vim: set ft=pug:
-lang: pug
-meta:
-  title: Email Whitelist Instructions
+vim: ft=pug
+title: Email Whitelist Instructions
 ---
 
 extends ../../templates/layouts/doc.pug

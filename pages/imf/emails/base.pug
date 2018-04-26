@@ -1,0 +1,35 @@
+extends ../../../templates/email/base
+include ../../../templates/email/mixins/header
+
+block body
+  +header(spaced=true)
+    | IM Freedom Workshop
+    br/
+    | #{location}
+
+  mj-section
+    mj-column
+      mj-text.
+        Congrats! Your seat for the #{location} IM Freedom Workshop has been
+        reserved. Save the date!
+      mj-text(font-size='24px' align='center')
+        p #[strong Date:] *|EVDATEFMT|*
+        p #[strong Location:] *|EVLOC|*
+
+  mj-section
+    mj-column
+      mj-text(mj-class='h2').
+        All Other Workshop Locations
+
+  mj-section(padding-top='0')
+    each loc in locations
+      - var date = moment(loc.date)
+      - var dstr = date.format('dddd<br/>MMMM D, YYYY')
+      mj-column
+        mj-text
+            p: strong !{dstr}
+            p= (loc.time || '12:30 pm & 6:30 pm')
+            p
+              | #{loc.name}
+              br/
+              | #{loc.addr}

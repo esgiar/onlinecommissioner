@@ -9,6 +9,7 @@ const helpers = require('./helpers')
 const SEP = /\\+/g
 const DEFAULT_LANG = 'nunjucks'
 const IMPORT_ENVS = ['EMAIL_SYS']
+const MODELINE = /(^|:|\s+)(ft|filetype)=([^\s:]+)/
 
 function loadYAML (file) {
   let yml
@@ -120,6 +121,19 @@ function renderTemplate (options) {
   })
 }
 
+function getLang (data) {
+  if (data.lang) {
+    return data.lang
+  }
+  if (data.vim) {
+    const m = MODELINE.exec(data.vim)
+    if (m) {
+      return m[3]
+    }
+  }
+  return DEFAULT_LANG
+}
+
 module.exports = {
   loadContext,
 
@@ -127,7 +141,7 @@ module.exports = {
     const filename = process.argv[2]
     const contents = Fs.readFileSync(filename)
     const file = matter(contents)
-    const lang = file.data.lang || DEFAULT_LANG
+    const lang = file.data ? getLang(file.data) : DEFAULT_LANG
 
     if (!_.has(renderers, lang)) {
       throw new Error(`No renderer registered for ${lang} templates`)

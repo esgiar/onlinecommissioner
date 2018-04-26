@@ -1,0 +1,26 @@
+---
+vim: ft=pug
+title: IMF Christchurch Welcome
+location: Christchurch
+locations:
+  - name: |
+      Chateau on the Park,
+      a Doubletree by Hilton
+    addr: 189 Deans Avenue Riccarton, 8011 Christchurch, NZ
+    date: '2018-05-29'
+    time: 2:30 pm & 6:00 pm
+  - name: |
+      Chateau on the Park,
+      a Doubletree by Hilton
+    addr: 189 Deans Avenue Riccarton, 8011 Christchurch, NZ
+    date: '2018-05-30'
+    time: 2:30 pm & 6:00 pm
+  - name: |
+      Chateau on the Park,
+      a Doubletree by Hilton
+    addr: 189 Deans Avenue Riccarton, 8011 Christchurch, NZ
+    date: '2018-05-31'
+    time: 2:30 pm & 6:00 pm
+---
+
+extends ./base

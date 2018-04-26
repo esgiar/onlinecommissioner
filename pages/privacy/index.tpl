@@ -1,6 +1,5 @@
 ---
-# vim: set ft=pug:
-lang: pug
+vim: ft=pug
 title: Privacy Policy
 ---
 

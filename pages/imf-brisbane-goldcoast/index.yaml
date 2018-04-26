@@ -1,7 +1,26 @@
+meta:
+  title: 'IM Freedom Workshop: Free Live Masterclass in Brisbane & Goldcoast'
+  description: >
+    This free internet marketing workshop will show you how to build and grow a
+    sustainable and profitable online business in your spare time.
+  image:
+    url: img/fblink-imf_generic-2x1.jpg
+    width: 1200
+    height: 628
+
 form:
+  url: all
+  confirm: imf-brisbane-goldcoast/thankyou.html
   list:
     mailchimp: 74b580e82c
+
+location:
+  short: 'Brisbane & Goldcoast'
+  full: 'Brisbane & Goldcoast, QLD'
+  map: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d453478.80065583123!2d152.7130057420838!3d-27.38186310944529!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b91579aac93d233%3A0x402a35af3deaf40!2sBrisbane+QLD%2C+Australia!5e0!3m2!1sen!2smy!4v1524495389292'
+
 timezone: 'Australia/Brisbane'
+
 locations:
   - name: Royal on the Park
     addr: 152 Alice Street, Brisbane QLD 4000

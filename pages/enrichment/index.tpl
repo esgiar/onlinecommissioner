@@ -1,21 +1,5 @@
 ---
-# vim: set ft=pug:
-lang: pug
-meta:
-  title: >
-    Enrichment eBook: How to achieve success from your very own home-based
-    online business
-  description: >
-    FREE Enrichment eBook: How to achieve success from your very own
-    home-based online business. Read how I enrich myself after making the
-    transition from a traditional to an online entrepreneur.
-  image:
-    url: img/fblink-enrichment_ebook-2x1.jpg
-    width: 1200
-    height: 630
-form:
-  url: all
-  confirm: enrichment/thankyou.html
+vim: ft=pug
 ---
 
 extends ../../templates/layouts/base

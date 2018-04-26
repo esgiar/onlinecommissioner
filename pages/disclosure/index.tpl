@@ -1,8 +1,6 @@
 ---
-# vim: set ft=pug:
-lang: pug
-meta:
-  title: Income Disclosure
+vim: ft=pug
+title: Income Disclosure
 ---
 
 extends ../../templates/layouts/doc.pug
