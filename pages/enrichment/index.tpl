@@ -38,25 +38,28 @@ mixin actionButton
     block
 
 block body
-  +header(
-    logo='img/logo-online_commissioner_tran_wht-2x1.png'
-    icon='book'
-    title='eBook Giveaway'
+  +hero(
+    background-color='black'
+    background-image=s('img/stock-hk_city_01-2x1.jpg')
   )
-
-  section.hero.is-dark
-    .hero-body
-      .container
-        +cols('centered')
-          +col(3)
-            figure.image.is-3by4
-              img(src=s('img/product-enrichment_ebook-3x4.jpg'))
-          +col(4).has-text-centered
-            br
-            br
-            h1.title.is-medium Free Download Expires In
-            +countdown('2018-04-30')
-            +actionButton Download Now For Free!
+    +cols('centered')
+      +col(7)
+        +headerLevel(
+          logo='img/logo-online_commissioner_tran_wht-2x1.png'
+          icon='book'
+          title='eBook Giveaway'
+        )
+    .spacer
+    +cols('centered')
+      +col(3)
+        figure.image.is-3by4
+          img(src=s('img/product-enrichment_ebook-3x4.jpg'))
+      +col(4).has-text-centered
+        br
+        br
+        h1.title.is-medium Free Download Expires In
+        +countdown('2018-04-30')
+        +actionButton Download Now For Free!
 
   +se
     +tt(size=1)

@@ -19,14 +19,18 @@ mixin actionButton
         | Register Now!
 
 block body
-  +header(
-    logo='img/logo-online_commissioner_tran_wht-2x1.png'
-    icon='graduation-cap'
-    title='Live Workshop',
+  +hero(
     background-color='black'
+    background-image=s('img/ppl-mobe_event_hk_01-3x2.jpg')
   )
-
-  +hero(background-color='black')#imf-hero
+    +cols('centered')
+      +col(8)
+        +headerLevel(
+          logo='img/logo-online_commissioner_tran_wht-2x1.png'
+          icon='book'
+          title='eBook Giveaway'
+        )
+    .spacer
     +cols('centered')
       +col(8).has-text-centered
         +tt(size=1) Free Live #[span.has-text-danger Masterclass]

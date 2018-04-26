@@ -1,8 +1,16 @@
 mixin hero
-  section(class=[
-    'hero',
-    attributes['background-color'] && `is-${attributes['background-color']}`
-  ])&attributes(_.omit(attributes, 'background-color'))
+  - var bgColor = attributes['background-color'];
+  - var bgImage = attributes['background-image'];
+  section(
+    class=[
+      'hero',
+      bgColor && `is-${bgColor}`,
+      bgImage && 'has-background'
+    ],
+    style={
+      'background-image': `url(${bgImage})` || 'none'
+    }
+  )&attributes(_.omit(attributes, 'background-image', 'background-color'))
     .hero-body
       .container
         block

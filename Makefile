@@ -53,13 +53,11 @@ EM_ARGS = $(TPL_ARGS)
 # CSS
 CSS_SRC := styles/index.scss
 CSS_DST := $(PUBLIC)/assets/css/index.css
-CSS_DEP := $(CSS_SRC)
-CSS_DEP += $(shell find pages -name '*.scss')
-CSS_DEP += $(shell find node_modules/bulma -name '*.scss' -o -name '*.sass')
+CSS_DEP := pages styles node_modules/bulma
+CSS_DEP := $(shell find $(CSS_DEP) -name '*.scss' -o -name '*.sass')
 
 # Javascript
-JS_SRC := $(shell find scripts -name '*.js')
-JS_SRC += $(shell find pages -name '*.js')
+JS_SRC := $(shell find pages scripts -name '*.js')
 JS_DST := $(JS_SRC:scripts/%.js=$(PUBLIC)/assets/js/%.js)
 JS_DST := $(JS_DST:pages/%.js=$(PUBLIC)/assets/pages/%.js)
 
