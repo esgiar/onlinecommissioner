@@ -52,8 +52,8 @@ block body
     .spacer
     +cols('centered')
       +col(3)
-        figure.image.is-3by4
-          img(src=s('img/product-enrichment_ebook-3x4.jpg'))
+        figure.image.is-2by3
+          img(src=s('img/product-enrichment_ebook_ipad-2x3.png'))
       +col(4).has-text-centered
         br
         br
