@@ -41,6 +41,10 @@ block body
       +col(4).has-text-centered
         br
         br
+        .content.is-medium
+          p.
+            How I enrich myself after making the transition from a traditional
+            to an online entrepreneur.
         h1.title.is-medium Free Download Expires In
         +countdown('2018-04-30')
         +actionButton Download Now For Free!
@@ -53,10 +57,10 @@ block body
     +co
       p.
         How I enrich myself after making the transition from a traditional
-        entrepreneur to an online entrepreneur.
+        to an online entrepreneur.
       p.
-        In this book, you will discover how I began the journey using the
-        internet and now help others to also achieve their goals.
+        In this book, you will discover how I began the journey of using the
+        internet to help others achieve their entrepreneurial goals.
     +tt(size=2)
       | In your free eBook, you will discover...
     +cl
