@@ -29,11 +29,8 @@ TPL_ARGS = pages/$*.yaml \
 		   pages/$(*D)/index.$(NODE_ENV).yaml
 
 # HTML Pages
-EXTS    := njk pug
-FI_OPTS := $(foreach n,$(EXTS),-o -name '*.$(n)')
-FI_OPTS := $(wordlist 2,$(words $(FI_OPTS)),$(FI_OPTS))
-TPL_DEP := $(shell find templates $(FI_OPTS))
-TPL_DEP := $(shell find pages $(FI_OPTS))
+FI_OPTS := -name '*.njk' -o -name '*.pug'
+TPL_DEP := $(shell find pages templates $(FI_OPTS))
 TPL_DEP += html-minifier.json
 PAGES   := $(shell find pages -name '*.tpl')
 PAGES   := $(PAGES:pages/%.tpl=$(PUBLIC)/%.html)
