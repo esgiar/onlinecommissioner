@@ -164,7 +164,11 @@ block body
       +actionButton
       p Got questions? Email me: #[a(href=`mailto:${email}`)= email]
 
-  +modal#sub-form
+  +modal#sub-form(
+    data-close-on='click'
+    data-close-event-category=`Form: ${path}`
+    data-close-event-action='close'
+  )
     +tt Limited Time Only! #[span.has-text-danger Register Now!]
     +st Complete the form and select the best time and location for you
     form.ajax(

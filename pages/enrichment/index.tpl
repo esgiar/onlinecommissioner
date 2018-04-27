@@ -3,13 +3,14 @@ vim: ft=pug
 ---
 
 extends ../../templates/layouts/base
-include ../../templates/mixins/header
-include ../../templates/mixins/countdown
-include ../../templates/mixins/section
 include ../../templates/mixins/checklist
-include ../../templates/mixins/img
-include ../../templates/mixins/scripts
 include ../../templates/mixins/columns
+include ../../templates/mixins/countdown
+include ../../templates/mixins/header
+include ../../templates/mixins/img
+include ../../templates/mixins/modal
+include ../../templates/mixins/scripts
+include ../../templates/mixins/section
 
 mixin actionButton
   button(
@@ -108,66 +109,67 @@ block body
 
   include ../../templates/footer
 
-  .modal#sub-form
-    .modal-background
-    .modal-content
-      .box
-        +tt Yes, I want the e-book!
-        +st Please enter your details correctly to claim your special access.
-        form.ajax(
-          action=subscribe_urls[email_sys][form.url]
-          accept-charset='utf-8'
-          method='post'
+  +modal#sub-form(
+    data-close-on='click'
+    data-close-event-category=`Form: ${path}`
+    data-close-event-action='close'
+  )
+    +tt Yes, I want the e-book!
+    +st Please enter your details correctly to claim your special access.
+    form.ajax(
+      action=subscribe_urls[email_sys][form.url]
+      accept-charset='utf-8'
+      method='post'
+    )
+      input(
+        type='hidden'
+        name='confirm_url'
+        value=uri(form.confirm)
+      )
+      input(
+        type='hidden'
+        name='list_id'
+        value=form.list[email_sys]
+      )
+      if form.email
+        input(
+          type='hidden'
+          name='email_template_id'
+          value=form.email.template
         )
-          input(
-            type='hidden'
-            name='confirm_url'
-            value=uri(form.confirm)
+        input(
+          type='hidden'
+          name='email_subject'
+          value=form.email.subject
+        )
+      .field
+        label.label Name
+          span.has-text-danger &nbsp;*
+        p.control.has-icons-left
+          input.input.is-medium(type='text' name='firstname' required)
+          span.icon.is-small.is-left
+            i.fas.fa-user
+      .field
+        label.label
+          | Email
+          span.has-text-danger &nbsp;*
+        p.control.has-icons-left
+          input.input.is-medium(type='email' name='email' required)
+          span.icon.is-small.is-left
+            i.fas.fa-at
+      .field
+        label.label Phone (with Country Code)
+        p.control.has-icons-left
+          input.input.is-medium.autofill-country-code(
+            type='text' name='phone'
           )
-          input(
-            type='hidden'
-            name='list_id'
-            value=form.list[email_sys]
-          )
-          if form.email
-            input(
-              type='hidden'
-              name='email_template_id'
-              value=form.email.template
-            )
-            input(
-              type='hidden'
-              name='email_subject'
-              value=form.email.subject
-            )
-          .field
-            label.label Name
-              span.has-text-danger &nbsp;*
-            p.control.has-icons-left
-              input.input.is-medium(type='text' name='firstname' required)
-              span.icon.is-small.is-left
-                i.fas.fa-user
-          .field
-            label.label
-              | Email
-              span.has-text-danger &nbsp;*
-            p.control.has-icons-left
-              input.input.is-medium(type='email' name='email' required)
-              span.icon.is-small.is-left
-                i.fas.fa-at
-          .field
-            label.label Phone (with Country Code)
-            p.control.has-icons-left
-              input.input.is-medium.autofill-country-code(
-                type='text' name='phone'
-              )
-              span.icon.is-small.is-left
-                i.fas.fa-phone
-            p.help
-              | Don't forget to include your country code.
-          .field.has-text-centered
-            button.button.is-primary.is-medium(type='submit')
-              | Send me the eBook
+          span.icon.is-small.is-left
+            i.fas.fa-phone
+        p.help
+          | Don't forget to include your country code.
+      .field.has-text-centered
+        button.button.is-primary.is-medium(type='submit')
+          | Send me the eBook
 
   if geoipiScriptURL
     script.

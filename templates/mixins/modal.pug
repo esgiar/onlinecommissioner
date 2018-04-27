@@ -1,7 +1,25 @@
 mixin modal
-  .modal&attributes(attributes)
-    .modal-background
+  -
+    var props = _.omit(
+      attributes,
+      'data-close-on',
+      'data-close-event-category',
+      'data-close-event-action'
+    );
+  .modal&attributes(props)
+    .modal-background(
+      ga-on=attributes['data-close-on']
+      ga-event-category=attributes['data-close-event-category']
+      ga-event-action=attributes['data-close-event-action']
+      ga-event-label='modal-background'
+    )
     .modal-content
       .box
         block
-    button.modal-close.is-large(aria-label='close')
+    button.modal-close.is-large(
+      aria-label='close'
+      ga-on=attributes['data-close-on']
+      ga-event-category=attributes['data-close-event-category']
+      ga-event-action=attributes['data-close-event-action']
+      ga-event-label='modal-button'
+    )
